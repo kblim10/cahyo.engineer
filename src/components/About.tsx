@@ -29,11 +29,10 @@ export default function About() {
               <p className="text-sm text-muted leading-relaxed">
                 {personalInfo.bio}
               </p>
-              <div className="mt-6 flex items-center gap-3 relative">
+              <div className="mt-6 flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-full overflow-hidden border border-accent/20 cursor-pointer transition-all hover:border-accent/60 hover:shadow-lg hover:shadow-accent/10"
-                  onMouseEnter={() => setShowCard(true)}
-                  onMouseLeave={() => setShowCard(false)}
+                  className="w-10 h-10 rounded-full overflow-hidden border border-accent/20 cursor-pointer transition-all hover:border-accent/60 hover:shadow-lg hover:shadow-accent/10 hover:scale-110"
+                  onClick={() => setShowCard(true)}
                 >
                   <Image
                     src="/profile.png"
@@ -44,61 +43,6 @@ export default function About() {
                   />
                 </div>
 
-                {/* Hover Card */}
-                <AnimatePresence>
-                  {showCard && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute bottom-14 left-0 z-50"
-                      onMouseEnter={() => setShowCard(true)}
-                      onMouseLeave={() => setShowCard(false)}
-                    >
-                      <div className="w-64 rounded-xl bg-card border border-border shadow-2xl shadow-black/40 overflow-hidden">
-                        {/* Card header gradient */}
-                        <div className="h-16 bg-gradient-to-r from-accent/20 via-purple-500/15 to-cyan-500/15 relative">
-                          <div className="absolute -bottom-8 left-4">
-                            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-card shadow-lg">
-                              <Image
-                                src="/profile.png"
-                                alt={personalInfo.name}
-                                width={64}
-                                height={64}
-                                className="object-cover w-full h-full"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        {/* Card body */}
-                        <div className="pt-10 pb-4 px-4">
-                          <p className="text-sm font-semibold text-foreground">
-                            {personalInfo.name}
-                          </p>
-                          <p className="text-[11px] text-accent font-mono mt-0.5">
-                            {personalInfo.title}
-                          </p>
-                          <div className="flex items-center gap-1.5 mt-2">
-                            <MapPin size={11} className="text-muted-foreground" />
-                            <span className="text-[10px] text-muted-foreground">
-                              {personalInfo.location}
-                            </span>
-                            <span className="text-muted-foreground mx-1">·</span>
-                            <span className="status-dot !w-[6px] !h-[6px]" />
-                            <span className="text-[10px] text-success">
-                              {personalInfo.availability}
-                            </span>
-                          </div>
-                          <p className="text-[10px] text-muted leading-relaxed mt-3 line-clamp-3">
-                            {personalInfo.tagline}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
                 <div>
                   <p className="text-sm font-medium">{personalInfo.name}</p>
                   <p className="text-xs text-muted-foreground">
@@ -108,6 +52,90 @@ export default function About() {
               </div>
             </div>
           </AnimatedCard>
+
+          {/* Profile Modal */}
+          <AnimatePresence>
+            {showCard && (
+              <>
+                {/* Backdrop */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+                  onClick={() => setShowCard(false)}
+                />
+                {/* Card */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="fixed inset-0 z-50 flex items-center justify-center p-6 pointer-events-none"
+                >
+                  <div
+                    className="w-full max-w-sm rounded-2xl bg-card border border-border shadow-2xl shadow-black/50 overflow-hidden pointer-events-auto"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Header gradient banner */}
+                    <div className="h-24 bg-gradient-to-r from-accent/30 via-purple-500/20 to-cyan-500/20 relative">
+                      <div className="absolute inset-0 bg-[url('/profile.png')] bg-cover bg-center opacity-10 blur-sm" />
+                      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2">
+                        <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-card shadow-xl ring-2 ring-accent/20">
+                          <Image
+                            src="/profile.png"
+                            alt={personalInfo.name}
+                            width={80}
+                            height={80}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    {/* Body */}
+                    <div className="pt-12 pb-6 px-6 text-center">
+                      <h3 className="text-base font-bold text-foreground">
+                        {personalInfo.name}
+                      </h3>
+                      <p className="text-xs text-accent font-mono mt-1">
+                        {personalInfo.title}
+                      </p>
+                      <div className="flex items-center justify-center gap-2 mt-3">
+                        <MapPin size={12} className="text-muted-foreground" />
+                        <span className="text-xs text-muted-foreground">
+                          {personalInfo.location}
+                        </span>
+                        <span className="text-muted-foreground">·</span>
+                        <span className="status-dot !w-[6px] !h-[6px]" />
+                        <span className="text-xs text-success">
+                          {personalInfo.availability}
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted leading-relaxed mt-4">
+                        {personalInfo.tagline}
+                      </p>
+                      <div className="mt-5 flex items-center justify-center gap-3">
+                        <a
+                          href="#contact"
+                          className="px-5 py-2 bg-accent hover:bg-accent-muted text-white text-xs rounded-full transition-all hover:shadow-lg hover:shadow-accent/25"
+                          onClick={() => setShowCard(false)}
+                        >
+                          Get in Touch
+                        </a>
+                        <button
+                          className="px-5 py-2 border border-border text-xs rounded-full text-muted hover:text-foreground hover:border-muted transition-all"
+                          onClick={() => setShowCard(false)}
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
 
           {/* Specialty cards */}
           <AnimatedCard delay={0.2}>
