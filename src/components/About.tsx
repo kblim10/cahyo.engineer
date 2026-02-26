@@ -2,7 +2,7 @@
 
 import { personalInfo } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { Code2, Cloud, Terminal, Cpu } from "lucide-react";
+import { Code2, Cloud, Terminal, Radio } from "lucide-react";
 
 export default function About() {
   return (
@@ -49,8 +49,8 @@ export default function About() {
                   Backend Development
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  APIs, microservices, event-driven architectures, and
-                  distributed systems.
+                  RESTful APIs with Node.js & Express.js, database management
+                  with MongoDB & MySQL, and Redis caching.
                 </p>
               </div>
             </div>
@@ -63,11 +63,11 @@ export default function About() {
               </div>
               <div>
                 <h3 className="text-sm font-semibold mb-1">
-                  Cloud Architecture
+                  Cloud Infrastructure
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Multi-cloud infra, IaC, serverless, and cost-optimized
-                  solutions.
+                  Kubernetes cluster management, Docker containerization,
+                  Linux server administration, and Cloudflare tunneling.
                 </p>
               </div>
             </div>
@@ -83,8 +83,8 @@ export default function About() {
                   DevOps & CI/CD
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Automated pipelines, GitOps, container orchestration, and
-                  monitoring.
+                  GitHub Actions pipelines, Helm charts, Prometheus &
+                  Grafana monitoring, and Bitnami deployments.
                 </p>
               </div>
             </div>
@@ -93,15 +93,15 @@ export default function About() {
           <AnimatedCard delay={0.4}>
             <div className="bento-card shimmer p-6 h-full flex flex-col justify-between">
               <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
-                <Cpu size={20} className="text-orange-400" />
+                <Radio size={20} className="text-orange-400" />
               </div>
               <div>
                 <h3 className="text-sm font-semibold mb-1">
-                  System Design
+                  IoT & Messaging
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Scalable architectures, database design, caching strategies,
-                  and performance tuning.
+                  ESP32 programming, EMQX MQTT broker, Telegraf data
+                  collection, and hardware-software integration.
                 </p>
               </div>
             </div>
@@ -122,34 +122,34 @@ export default function About() {
                     {"  "}
                     <span className="text-emerald-400">passion</span>:{" "}
                     <span className="text-orange-300">
-                      &quot;building reliable systems&quot;
+                      &quot;backend &amp; cloud infrastructure&quot;
                     </span>
                     ,{"\n"}
                     {"  "}
                     <span className="text-emerald-400">philosophy</span>:{" "}
                     <span className="text-orange-300">
-                      &quot;automate everything&quot;
+                      &quot;automate, containerize, deploy&quot;
                     </span>
                     ,{"\n"}
                     {"  "}
-                    <span className="text-emerald-400">goal</span>:{" "}
+                    <span className="text-emerald-400">stack</span>:{" "}
                     <span className="text-orange-300">
-                      &quot;99.99% uptime&quot;
+                      &quot;Node.js + K8s + Linux&quot;
                     </span>
                     ,{"\n"}
                     {"  "}
                     <span className="text-emerald-400">love</span>:{" "}
                     <span className="text-accent">[</span>
                     <span className="text-orange-300">
-                      &quot;clean code&quot;
+                      &quot;clean APIs&quot;
                     </span>
                     ,{" "}
                     <span className="text-orange-300">
-                      &quot;observability&quot;
+                      &quot;IoT systems&quot;
                     </span>
                     ,{" "}
                     <span className="text-orange-300">
-                      &quot;open source&quot;
+                      &quot;monitoring&quot;
                     </span>
                     <span className="text-accent">]</span>
                     {"\n"}

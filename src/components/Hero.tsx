@@ -110,7 +110,7 @@ export default function Hero() {
                 <span className="text-foreground">whoami</span>
               </p>
               <p className="text-muted">
-                Backend Engineer | Cloud Architect | DevOps
+                TRPL Student | Backend & Cloud Infra | IoT
               </p>
               <p className="mt-2">
                 <span className="text-success">cahyo</span>
@@ -120,7 +120,7 @@ export default function Hero() {
                 <span className="text-foreground">cat skills.json | jq</span>
               </p>
               <p className="text-accent">
-                {`{ "focus": ["scalable systems", "cloud-native", "automation"] }`}
+                {`{ "focus": ["Node.js APIs", "Kubernetes", "IoT/MQTT"] }`}
               </p>
             </div>
           </div>
