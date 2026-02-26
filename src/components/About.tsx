@@ -2,10 +2,14 @@
 
 import { personalInfo } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { Code2, Cloud, Terminal, Radio } from "lucide-react";
+import { Code2, Cloud, Terminal, Radio, MapPin } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function About() {
+  const [showCard, setShowCard] = useState(false);
+
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -25,8 +29,12 @@ export default function About() {
               <p className="text-sm text-muted leading-relaxed">
                 {personalInfo.bio}
               </p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-accent/20">
+              <div className="mt-6 flex items-center gap-3 relative">
+                <div
+                  className="w-10 h-10 rounded-full overflow-hidden border border-accent/20 cursor-pointer transition-all hover:border-accent/60 hover:shadow-lg hover:shadow-accent/10"
+                  onMouseEnter={() => setShowCard(true)}
+                  onMouseLeave={() => setShowCard(false)}
+                >
                   <Image
                     src="/profile.png"
                     alt={personalInfo.name}
@@ -35,6 +43,62 @@ export default function About() {
                     className="object-cover w-full h-full"
                   />
                 </div>
+
+                {/* Hover Card */}
+                <AnimatePresence>
+                  {showCard && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute bottom-14 left-0 z-50"
+                      onMouseEnter={() => setShowCard(true)}
+                      onMouseLeave={() => setShowCard(false)}
+                    >
+                      <div className="w-64 rounded-xl bg-card border border-border shadow-2xl shadow-black/40 overflow-hidden">
+                        {/* Card header gradient */}
+                        <div className="h-16 bg-gradient-to-r from-accent/20 via-purple-500/15 to-cyan-500/15 relative">
+                          <div className="absolute -bottom-8 left-4">
+                            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-card shadow-lg">
+                              <Image
+                                src="/profile.png"
+                                alt={personalInfo.name}
+                                width={64}
+                                height={64}
+                                className="object-cover w-full h-full"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        {/* Card body */}
+                        <div className="pt-10 pb-4 px-4">
+                          <p className="text-sm font-semibold text-foreground">
+                            {personalInfo.name}
+                          </p>
+                          <p className="text-[11px] text-accent font-mono mt-0.5">
+                            {personalInfo.title}
+                          </p>
+                          <div className="flex items-center gap-1.5 mt-2">
+                            <MapPin size={11} className="text-muted-foreground" />
+                            <span className="text-[10px] text-muted-foreground">
+                              {personalInfo.location}
+                            </span>
+                            <span className="text-muted-foreground mx-1">·</span>
+                            <span className="status-dot !w-[6px] !h-[6px]" />
+                            <span className="text-[10px] text-success">
+                              {personalInfo.availability}
+                            </span>
+                          </div>
+                          <p className="text-[10px] text-muted leading-relaxed mt-3 line-clamp-3">
+                            {personalInfo.tagline}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <div>
                   <p className="text-sm font-medium">{personalInfo.name}</p>
                   <p className="text-xs text-muted-foreground">
