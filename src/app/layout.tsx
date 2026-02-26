@@ -24,6 +24,10 @@ export const metadata: Metadata = {
     "software engineer",
   ],
   authors: [{ name: "Muhamad Cahyo Rifki Dwi Putra" }],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

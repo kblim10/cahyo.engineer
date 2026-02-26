@@ -3,6 +3,7 @@
 import { personalInfo } from "@/lib/data";
 import { AnimatedCard } from "./animations";
 import { Code2, Cloud, Terminal, Radio } from "lucide-react";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -25,8 +26,14 @@ export default function About() {
                 {personalInfo.bio}
               </p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center">
-                  <span className="text-lg">👨‍💻</span>
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-accent/20">
+                  <Image
+                    src="/profile.png"
+                    alt={personalInfo.name}
+                    width={40}
+                    height={40}
+                    className="object-cover w-full h-full"
+                  />
                 </div>
                 <div>
                   <p className="text-sm font-medium">{personalInfo.name}</p>
