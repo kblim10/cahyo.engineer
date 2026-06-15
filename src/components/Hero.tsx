@@ -33,118 +33,120 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-20 pointer-events-none">
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
-        <div className="text-center lg:text-left pointer-events-auto">
+    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden pt-32 pb-20 pointer-events-none">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+        <div className="text-center lg:text-left pointer-events-auto flex flex-col justify-center">
           <motion.div
-            initial={{ opacity: 0, z: -100, rotateX: 20 }}
-            animate={{ opacity: 1, z: 0, rotateX: 0 }}
-            transition={{ duration: 0.8, type: "spring" }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-border/60 bg-card/40 backdrop-blur-md mb-10 shadow-sm"
           >
-            <span className="status-dot" />
-            <span className="text-xs text-muted font-mono">
+            <span className="status-dot w-2.5 h-2.5" />
+            <span className="text-sm text-foreground/80 font-mono tracking-wide uppercase">
               {personalInfo.availability}
             </span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, z: -100, rotateX: 20 }}
-            animate={{ opacity: 1, z: 0, rotateX: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, type: "spring" }}
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-4 drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+            className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-6 leading-[1.1] drop-shadow-2xl"
           >
-            <span className="gradient-text">{personalInfo.nickname}</span>
-            <span className="text-accent drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">.</span>
+            <span className="text-foreground">{personalInfo.nickname}</span>
+            <span className="text-accent">.</span>
           </motion.h1>
 
           <motion.div
-            initial={{ opacity: 0, z: -100, rotateX: 20 }}
-            animate={{ opacity: 1, z: 0, rotateX: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
-            className="mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="mb-8"
           >
-            <h2 className="text-xl md:text-2xl font-mono text-muted-foreground">
-              <span className="text-accent drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">&gt;</span> {personalInfo.title}
+            <h2 className="text-2xl md:text-4xl font-mono text-muted-foreground font-light tracking-tight">
+              <span className="text-accent mr-3">&gt;</span> {personalInfo.title}
               <span className="typing-cursor" />
             </h2>
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, z: -100, rotateX: 20 }}
-            animate={{ opacity: 1, z: 0, rotateX: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
-            className="text-base md:text-lg text-muted max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed drop-shadow-sm"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="text-lg md:text-2xl text-muted-foreground/80 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed font-light"
           >
             {personalInfo.tagline}
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, z: -100, rotateX: 20 }}
-            animate={{ opacity: 1, z: 0, rotateX: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6"
           >
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin size={14} />
-              <span>{personalInfo.location}</span>
+            <div className="flex items-center gap-3 text-base text-muted-foreground">
+              <MapPin size={18} className="text-accent" />
+              <span className="font-medium tracking-wide">{personalInfo.location}</span>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-border" />
+            <div className="hidden sm:block w-px h-8 bg-border/80" />
             <a
               href="#contact"
-              className="px-6 py-2.5 bg-accent hover:bg-accent-muted text-white text-sm rounded-full transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+              className="px-8 py-4 bg-foreground text-background text-base font-medium rounded-none hover:bg-accent hover:text-white transition-all hover:scale-105"
             >
-              Get in Touch
+              Start a project
             </a>
             <a
               href="#projects"
-              className="px-6 py-2.5 border border-border text-sm rounded-full text-muted hover:text-foreground hover:border-muted hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"
+              className="px-8 py-4 border border-border text-base font-medium rounded-none text-muted-foreground hover:text-foreground hover:border-foreground transition-all"
             >
-              View Projects
+              View work
             </a>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50, rotateX: 30 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ duration: 1, delay: 0.6, type: "spring", bounce: 0.4 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="mt-12 mx-auto lg:mx-0 max-w-lg cursor-crosshair group perspective-[1000px]"
+            className="mt-20 mx-auto lg:mx-0 max-w-xl cursor-crosshair group perspective-[1200px]"
           >
-            <div className="code-block p-4 text-left transition-shadow duration-300 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.2)] border border-border/50 group-hover:border-accent/50 relative bg-card/60 backdrop-blur-md"
-                 style={{ transform: "translateZ(30px)" }}>
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg pointer-events-none" style={{ transform: "translateZ(-10px)" }}/>
+            <div className="code-block p-6 text-left transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-border/30 group-hover:border-accent/40 relative bg-black/40 backdrop-blur-xl rounded-xl overflow-hidden"
+                 style={{ transform: "translateZ(40px)" }}>
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
-              <div className="flex items-center gap-2 mb-3" style={{ transform: "translateZ(40px)" }}>
-                <div className="w-3 h-3 rounded-full bg-red-500/60 shadow-[0_0_5px_rgba(239,68,68,0.5)]" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/60 shadow-[0_0_5px_rgba(234,179,8,0.5)]" />
-                <div className="w-3 h-3 rounded-full bg-green-500/60 shadow-[0_0_5px_rgba(34,197,94,0.5)]" />
-                <span className="text-[10px] text-muted-foreground ml-2 font-mono">
-                  ~/portfolio
+              <div className="flex items-center gap-2.5 mb-5" style={{ transform: "translateZ(20px)" }}>
+                <div className="w-3.5 h-3.5 rounded-full bg-red-500/80" />
+                <div className="w-3.5 h-3.5 rounded-full bg-yellow-500/80" />
+                <div className="w-3.5 h-3.5 rounded-full bg-green-500/80" />
+                <span className="text-xs text-muted-foreground ml-3 font-mono tracking-wider opacity-60">
+                  zsh - root@cahyo-cloud
                 </span>
               </div>
-              <div className="space-y-1 text-xs md:text-sm font-mono" style={{ transform: "translateZ(50px)" }}>
+              <div className="space-y-3 text-sm md:text-base font-mono leading-relaxed" style={{ transform: "translateZ(30px)" }}>
                 <p>
-                  <span className="text-success drop-shadow-[0_0_5px_rgba(34,197,94,0.4)]">cahyo</span>
+                  <span className="text-green-400">root</span>
                   <span className="text-muted-foreground">@</span>
-                  <span className="text-accent drop-shadow-[0_0_5px_rgba(59,130,246,0.4)]">cloud</span>
-                  <span className="text-muted-foreground"> ~ $ </span>
-                  <span className="text-foreground">whoami</span>
+                  <span className="text-blue-400">cahyo-cloud</span>
+                  <span className="text-muted-foreground"> ~ # </span>
+                  <span className="text-foreground/90 font-semibold">systemctl status profile</span>
                 </p>
-                <p className="text-muted">
-                  TRPL Student | Backend & Cloud Infra | IoT
+                <p className="text-muted-foreground pl-4 border-l-2 border-border/50 ml-2">
+                  ● profile.service - Cloud Architect & IoT Dev<br/>
+                  Active: <span className="text-green-400 font-bold">active (running)</span> since Mon 2024-01-01 00:00:00 UTC<br/>
+                  Main PID: 1 (node)
                 </p>
-                <p className="mt-2">
-                  <span className="text-success drop-shadow-[0_0_5px_rgba(34,197,94,0.4)]">cahyo</span>
+                <p className="mt-4">
+                  <span className="text-green-400">root</span>
                   <span className="text-muted-foreground">@</span>
-                  <span className="text-accent drop-shadow-[0_0_5px_rgba(59,130,246,0.4)]">cloud</span>
-                  <span className="text-muted-foreground"> ~ $ </span>
-                  <span className="text-foreground">cat skills.json | jq</span>
+                  <span className="text-blue-400">cahyo-cloud</span>
+                  <span className="text-muted-foreground"> ~ # </span>
+                  <span className="text-foreground/90 font-semibold">cat skills.json</span>
                 </p>
-                <p className="text-accent drop-shadow-[0_0_3px_rgba(59,130,246,0.3)]">
-                  {`{ "focus": ["Node.js APIs", "Kubernetes", "IoT/MQTT"] }`}
+                <p className="text-accent/90 pl-4">
+                  {`{ "stack": ["Node.js", "Kubernetes", "AWS", "MQTT"] }`}
                 </p>
               </div>
             </div>
@@ -156,13 +158,14 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 pointer-events-auto"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="p-4 rounded-full border border-border/50 bg-card/20 backdrop-blur-sm"
         >
-          <ArrowDown size={16} className="text-muted-foreground" />
+          <ArrowDown size={20} className="text-muted-foreground" />
         </motion.div>
       </motion.div>
     </section>

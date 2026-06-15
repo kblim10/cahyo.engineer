@@ -1,125 +1,146 @@
 "use client";
 
 import { useRef, useMemo, useEffect, useState } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useScroll } from "@react-three/drei";
 import * as THREE from "three";
 
-export function Particles() {
-  const count = 500;
-  const mesh = useRef<THREE.InstancedMesh>(null);
-  const light = useRef<THREE.PointLight>(null);
+export function CameraController() {
   const scroll = useScroll();
 
-  // We track mouse position manually since the canvas will be behind other elements
-  const mouse = useRef({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const dummy = useMemo(() => new THREE.Object3D(), []);
-  const particles = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      const t = Math.random() * 100;
-      const factor = 10 + Math.random() * 50; // closer
-      const speed = 0.02 + Math.random() / 100; // faster
-      const xFactor = -30 + Math.random() * 60;
-      const yFactor = -30 + Math.random() * 60;
-      const zFactor = -30 + Math.random() * 60;
-      temp.push({ t, factor, speed, xFactor, yFactor, zFactor, mx: 0, my: 0 });
-    }
-    return temp;
-  }, [count]);
-
   useFrame((state) => {
-    // Scroll-based camera journey
+    // Scroll-based camera journey.
+    // Offset goes from 0 to 1.
     const offset = scroll.offset;
-    state.camera.position.z = 15 - offset * 40; // Travel forward through the scene
-    state.camera.rotation.z = offset * Math.PI; // Slight roll
     
-    if (light.current) {
-      light.current.position.set(
-        (mouse.current.x * state.viewport.width),
-        (mouse.current.y * state.viewport.height),
-        0
-      );
-    }
-    particles.forEach((particle, i) => {
-      let { t, factor, speed, xFactor, yFactor, zFactor } = particle;
-      t = particle.t += speed / 2;
-      const a = Math.cos(t) + Math.sin(t * 1) / 10;
-      const b = Math.sin(t) + Math.cos(t * 2) / 10;
-      const s = Math.cos(t) * 1.5; // larger scale
-      particle.mx += (mouse.current.x * 200 - particle.mx) * 0.02; // more responsive
-      particle.my += (mouse.current.y * 200 - particle.my) * 0.02;
-      dummy.position.set(
-        (particle.mx / 10) * a + xFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 1) * factor) / 10,
-        (particle.my / 10) * b + yFactor + Math.sin((t / 10) * factor) + (Math.cos(t * 2) * factor) / 10,
-        (particle.my / 10) * b + zFactor + Math.cos((t / 10) * factor) + (Math.sin(t * 3) * factor) / 10
-      );
-      dummy.scale.set(s, s, s);
-      dummy.rotation.set(s * 5, s * 5, s * 5);
-      dummy.updateMatrix();
-      if (mesh.current) {
-        mesh.current.setMatrixAt(i, dummy.matrix);
-      }
-    });
-    if (mesh.current) {
-      mesh.current.instanceMatrix.needsUpdate = true;
+    // Move the camera slightly forward, but not so far that we pass the stars.
+    // Stars are centered around 0 with a radius of 50. 
+    // We start at z = 15 and move to z = 5.
+    state.camera.position.z = 15 - offset * 10; 
+    
+    // Slight rotation for the warp effect without breaking the view
+    state.camera.rotation.z = offset * (Math.PI / 4);
+  });
+
+  return null;
+}
+
+
+export function ServerNodes() {
+  const leftNodes = useRef<THREE.Group>(null);
+  const rightNodes = useRef<THREE.Group>(null);
+  const scroll = useScroll();
+
+  useFrame(() => {
+    const offset = scroll.offset;
+    // Move nodes up and down based on scroll
+    if (leftNodes.current && rightNodes.current) {
+      leftNodes.current.position.y = offset * 20;
+      rightNodes.current.position.y = -offset * 20;
     }
   });
 
+  // Create an array of node positions
+  const nodePositions = [];
+  for (let i = -30; i < 30; i += 4) {
+    nodePositions.push(i);
+  }
+
   return (
     <>
-      <pointLight ref={light} distance={60} intensity={30} color="#3b82f6" />
-      <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
-        <dodecahedronGeometry args={[0.4, 0]} />
-        <meshPhysicalMaterial 
-          color="#3b82f6" 
-          emissive="#1d4ed8" 
-          emissiveIntensity={0.5} 
-          roughness={0.2} 
-          metalness={0.8} 
-        />
-      </instancedMesh>
+      <group ref={leftNodes} position={[-8, 0, 0]}>
+        {/* Vertical Server Line */}
+        <mesh position={[0, 0, 0]}>
+          <cylinderGeometry args={[0.02, 0.02, 100, 8]} />
+          <meshBasicMaterial color="#1e3a8a" />
+        </mesh>
+        {nodePositions.map((y, idx) => (
+          <group key={`left-${idx}`} position={[0, y, 0]}>
+            <mesh>
+              <boxGeometry args={[0.4, 0.4, 0.4]} />
+              <meshStandardMaterial color="#3b82f6" emissive="#1d4ed8" emissiveIntensity={0.5} wireframe />
+            </mesh>
+            <mesh position={[0.4, 0, 0]}>
+              <boxGeometry args={[0.6, 0.1, 0.1]} />
+              <meshBasicMaterial color="#3b82f6" />
+            </mesh>
+          </group>
+        ))}
+      </group>
+
+      <group ref={rightNodes} position={[8, 0, 0]}>
+        <mesh position={[0, 0, 0]}>
+          <cylinderGeometry args={[0.02, 0.02, 100, 8]} />
+          <meshBasicMaterial color="#1e3a8a" />
+        </mesh>
+        {nodePositions.map((y, idx) => (
+          <group key={`right-${idx}`} position={[0, y, 0]}>
+            <mesh>
+              <boxGeometry args={[0.4, 0.4, 0.4]} />
+              <meshStandardMaterial color="#3b82f6" emissive="#1d4ed8" emissiveIntensity={0.5} wireframe />
+            </mesh>
+            <mesh position={[-0.4, 0, 0]}>
+              <boxGeometry args={[0.6, 0.1, 0.1]} />
+              <meshBasicMaterial color="#3b82f6" />
+            </mesh>
+          </group>
+        ))}
+      </group>
     </>
   );
 }
 
 export function Hero3DObject() {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const groupRef = useRef<THREE.Group>(null);
   
   useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += delta * 0.2;
-      meshRef.current.rotation.y += delta * 0.3;
+    if (groupRef.current) {
+      groupRef.current.rotation.x += delta * 0.15;
+      groupRef.current.rotation.y += delta * 0.2;
     }
   });
 
   return (
-    <mesh ref={meshRef} scale={1.5} position={[4, 0, 0]}>
-      <torusKnotGeometry args={[1, 0.3, 256, 64]} />
-      <meshPhysicalMaterial 
-        color="#3b82f6"
-        emissive="#1d4ed8"
-        emissiveIntensity={0.2}
-        transmission={0.9}
-        opacity={1}
-        metalness={0.2}
-        roughness={0.1}
-        ior={1.5}
-        thickness={2}
-        clearcoat={1}
-        clearcoatRoughness={0.1}
-      />
-    </mesh>
+    <group ref={groupRef} position={[4, 0, 0]} scale={1.2}>
+      {/* Outer Wireframe Cube */}
+      <mesh>
+        <boxGeometry args={[2.5, 2.5, 2.5]} />
+        <meshStandardMaterial 
+          color="#3b82f6"
+          emissive="#1d4ed8"
+          emissiveIntensity={0.8}
+          wireframe
+          transparent
+          opacity={0.3}
+        />
+      </mesh>
+      
+      {/* Inner Solid Core */}
+      <mesh>
+        <boxGeometry args={[1.2, 1.2, 1.2]} />
+        <meshPhysicalMaterial 
+          color="#1e40af"
+          emissive="#1e3a8a"
+          emissiveIntensity={0.5}
+          transmission={0.9}
+          opacity={1}
+          metalness={0.8}
+          roughness={0.1}
+          ior={1.5}
+          thickness={2}
+        />
+      </mesh>
+      
+      {/* Orbiting Data Node */}
+      <mesh position={[1.5, 1.5, 0]}>
+        <sphereGeometry args={[0.15, 16, 16]} />
+        <meshBasicMaterial color="#60a5fa" />
+      </mesh>
+      <mesh position={[-1.5, -1.5, 0]}>
+        <sphereGeometry args={[0.15, 16, 16]} />
+        <meshBasicMaterial color="#60a5fa" />
+      </mesh>
+    </group>
   );
 }
 

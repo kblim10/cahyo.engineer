@@ -10,7 +10,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll, Stars } from "@react-three/drei";
-import { Particles, Hero3DObject } from "@/components/Scene3D";
+import { CameraController, Hero3DObject, ServerNodes } from "@/components/Scene3D";
 
 export default function Home() {
   return (
@@ -23,12 +23,13 @@ export default function Home() {
           <ambientLight intensity={0.5} />
           
           {/* We use ScrollControls to dictate the page height (e.g. 7 pages long) */}
-          <ScrollControls pages={7} damping={0.2} distance={1.2}>
+          <ScrollControls pages={6.5} damping={0.2} distance={1.2}>
             
             {/* 3D background elements that scroll or react to scroll */}
             <Scroll>
+              <CameraController />
               <Stars radius={50} depth={50} count={6000} factor={6} saturation={0.5} fade speed={2} />
-              <Particles />
+              <ServerNodes />
               {/* We place the Hero3DObject so it stays at the top of the scene */}
               <Hero3DObject />
             </Scroll>
