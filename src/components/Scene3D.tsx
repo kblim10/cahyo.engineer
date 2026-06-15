@@ -1,14 +1,15 @@
 "use client";
 
 import { useRef, useMemo, useEffect, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Stars } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useScroll } from "@react-three/drei";
 import * as THREE from "three";
 
-function Particles() {
+export function Particles() {
   const count = 500;
   const mesh = useRef<THREE.InstancedMesh>(null);
   const light = useRef<THREE.PointLight>(null);
+  const scroll = useScroll();
 
   // We track mouse position manually since the canvas will be behind other elements
   const mouse = useRef({ x: 0, y: 0 });
@@ -38,6 +39,11 @@ function Particles() {
   }, [count]);
 
   useFrame((state) => {
+    // Scroll-based camera journey
+    const offset = scroll.offset;
+    state.camera.position.z = 15 - offset * 40; // Travel forward through the scene
+    state.camera.rotation.z = offset * Math.PI; // Slight roll
+    
     if (light.current) {
       light.current.position.set(
         (mouse.current.x * state.viewport.width),
@@ -87,22 +93,34 @@ function Particles() {
   );
 }
 
-export default function Scene3D() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
+export function Hero3DObject() {
+  const meshRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.2;
+      meshRef.current.rotation.y += delta * 0.3;
+    }
+  });
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
-        <ambientLight intensity={0.5} />
-        <Stars radius={50} depth={50} count={6000} factor={6} saturation={0.5} fade speed={2} />
-        <Particles />
-      </Canvas>
-    </div>
+    <mesh ref={meshRef} scale={1.5} position={[4, 0, 0]}>
+      <torusKnotGeometry args={[1, 0.3, 256, 64]} />
+      <meshPhysicalMaterial 
+        color="#3b82f6"
+        emissive="#1d4ed8"
+        emissiveIntensity={0.2}
+        transmission={0.9}
+        opacity={1}
+        metalness={0.2}
+        roughness={0.1}
+        ior={1.5}
+        thickness={2}
+        clearcoat={1}
+        clearcoatRoughness={0.1}
+      />
+    </mesh>
   );
 }
+
+
