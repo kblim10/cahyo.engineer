@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Scene3D from "@/components/Scene3D";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,8 +40,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-bg grid-pattern min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-bg grid-pattern min-h-screen relative`}
       >
+        <Scene3D />
         {children}
       </body>
     </html>
