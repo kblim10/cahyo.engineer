@@ -1,7 +1,7 @@
 "use client";
 
 import { experiences, education } from "@/lib/data";
-import { AnimatedCard } from "./animations";
+import { AnimatedCard, TiltCard } from "./animations";
 import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function Experience() {
@@ -23,37 +23,39 @@ export default function Experience() {
           <div className="space-y-6">
             {experiences.map((exp, idx) => (
               <AnimatedCard key={idx} delay={0.1 + idx * 0.1}>
-                <div className="bento-card shimmer p-6 md:ml-12 relative">
-                  {/* Timeline dot */}
-                  <div className="absolute -left-[calc(3rem+7px)] top-8 w-3.5 h-3.5 rounded-full border-2 border-accent bg-background hidden md:block" />
+                <TiltCard>
+                  <div className="bento-card shimmer p-6 md:ml-12 relative">
+                    {/* Timeline dot */}
+                    <div className="absolute -left-[calc(3rem+7px)] top-8 w-3.5 h-3.5 rounded-full border-2 border-accent bg-background hidden md:block" />
 
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center md:hidden">
-                        <Briefcase size={14} className="text-accent" />
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2" style={{ transform: "translateZ(20px)" }}>
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center md:hidden">
+                          <Briefcase size={14} className="text-accent" />
+                        </div>
+                        <div>
+                          <h3 className="text-sm font-semibold">{exp.role}</h3>
+                          <p className="text-xs text-accent">{exp.company}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-sm font-semibold">{exp.role}</h3>
-                        <p className="text-xs text-accent">{exp.company}</p>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono text-muted-foreground">
-                      {exp.period}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-muted leading-relaxed mb-4">
-                    {exp.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tech.map((t) => (
-                      <span key={t} className="tech-badge text-[10px]">
-                        {t}
+                      <span className="text-xs font-mono text-muted-foreground">
+                        {exp.period}
                       </span>
-                    ))}
+                    </div>
+
+                    <p className="text-xs text-muted leading-relaxed mb-4" style={{ transform: "translateZ(10px)" }}>
+                      {exp.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2" style={{ transform: "translateZ(15px)" }}>
+                      {exp.tech.map((t) => (
+                        <span key={t} className="tech-badge text-[10px]">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </TiltCard>
               </AnimatedCard>
             ))}
           </div>
