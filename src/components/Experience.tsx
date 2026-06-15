@@ -6,13 +6,13 @@ import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="py-32 px-6 relative z-10 pointer-events-none">
+      <div className="max-w-7xl mx-auto pointer-events-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-3 mb-12">
-            <div className="section-line" />
-            <span className="font-mono text-sm text-accent">03.</span>
-            <h2 className="text-2xl font-bold">Experience</h2>
+          <div className="flex items-center gap-4 mb-20">
+            <div className="w-16 h-px bg-accent/50" />
+            <span className="font-mono text-base text-accent uppercase tracking-widest">03.</span>
+            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter">Experience<span className="text-accent">.</span></h2>
           </div>
         </AnimatedCard>
 

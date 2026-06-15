@@ -76,13 +76,13 @@ const skillSections = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-32 px-6 relative z-10 pointer-events-none">
+      <div className="max-w-7xl mx-auto pointer-events-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-3 mb-12">
-            <div className="section-line" />
-            <span className="font-mono text-sm text-accent">02.</span>
-            <h2 className="text-2xl font-bold">Tech Stack</h2>
+          <div className="flex items-center gap-4 mb-20">
+            <div className="w-16 h-px bg-accent/50" />
+            <span className="font-mono text-base text-accent uppercase tracking-widest">02.</span>
+            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter">Skills & Toolkit<span className="text-accent">.</span></h2>
           </div>
         </AnimatedCard>
 
