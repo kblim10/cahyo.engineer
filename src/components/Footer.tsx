@@ -16,11 +16,11 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
             className="flex flex-col gap-8"
           >
-            <h2 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] leading-[1.1] font-semibold text-cream-100 max-w-[14ch]">
-              Interested in working <span className="italic text-peach-300">together?</span>
+            <h2 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] leading-[1.1] font-semibold text-ice-100 max-w-[14ch]">
+              Interested in working <span className="italic text-cyan-300">together?</span>
             </h2>
-            <a href="mailto:putrarifki705@gmail.com" className="inline-flex items-center gap-4 text-peach-400 hover:text-cream-100 transition-colors w-fit group">
-              <span className="font-display text-2xl md:text-3xl font-semibold italic border-b border-peach-400/30 group-hover:border-cream-100/30 transition-colors pb-1">
+            <a href="mailto:putrarifki705@gmail.com" className="inline-flex items-center gap-4 text-cyan-400 hover:text-ice-100 transition-colors w-fit group">
+              <span className="font-display text-2xl md:text-3xl font-semibold italic border-b border-cyan-400/30 group-hover:border-ice-100/30 transition-colors pb-1">
                 putrarifki705@gmail.com
               </span>
             </a>
@@ -36,15 +36,15 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-ink-200">Social</span>
               <div className="flex flex-col gap-2">
-                <a href="https://github.com/kblim10" target="_blank" rel="noopener noreferrer" className="font-serif italic text-lg md:text-xl text-cream-100 hover:text-peach-300 transition-colors">GitHub</a>
-                <a href="https://linkedin.com/in/kblim-cahyo" target="_blank" rel="noopener noreferrer" className="font-serif italic text-lg md:text-xl text-cream-100 hover:text-peach-300 transition-colors">LinkedIn</a>
+                <a href="https://github.com/kblim10" target="_blank" rel="noopener noreferrer" className="font-serif italic text-lg md:text-xl text-ice-100 hover:text-cyan-300 transition-colors">GitHub</a>
+                <a href="https://linkedin.com/in/kblim-cahyo" target="_blank" rel="noopener noreferrer" className="font-serif italic text-lg md:text-xl text-ice-100 hover:text-cyan-300 transition-colors">LinkedIn</a>
               </div>
             </div>
             <div className="flex flex-col gap-4">
               <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-ink-200">Navigate</span>
               <div className="flex flex-col gap-2">
                 {["About", "Skills", "Experience", "Projects"].map((link) => (
-                  <a key={link} href={`#${link.toLowerCase()}`} className="font-serif italic text-lg md:text-xl text-cream-100 hover:text-peach-300 transition-colors">
+                  <a key={link} href={`#${link.toLowerCase()}`} className="font-serif italic text-lg md:text-xl text-ice-100 hover:text-cyan-300 transition-colors">
                     {link}
                   </a>
                 ))}

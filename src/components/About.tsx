@@ -26,9 +26,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display max-w-[18ch] text-5xl font-semibold leading-[1.0] tracking-[-0.03em] text-balance text-cream-100 md:text-7xl lg:text-[5.5rem]"
+            className="font-display max-w-[18ch] text-5xl font-semibold leading-[1.0] tracking-[-0.03em] text-balance text-ice-100 md:text-7xl lg:text-[5.5rem]"
           >
-            A backend engineer <span className="italic text-peach-300">who thinks in systems</span>
+            A backend engineer <span className="italic text-cyan-300">who thinks in systems</span>
           </motion.h2>
         </div>
 
@@ -51,8 +51,8 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-wrap items-center gap-4 border-t border-dashed border-ink-200/24 pt-5"
             >
-              <span className="font-mono text-peach-300">/</span>
-              <span className="font-display text-2xl font-semibold italic text-cream-100 md:text-[28px]">{personalInfo.name}</span>
+              <span className="font-mono text-cyan-300">/</span>
+              <span className="font-display text-2xl font-semibold italic text-ice-100 md:text-[28px]">{personalInfo.name}</span>
               <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-ink-200">· {personalInfo.title}</span>
             </motion.div>
           </div>
@@ -72,7 +72,7 @@ export default function About() {
                 height={1000}
                 className="absolute inset-0 block h-full w-full object-cover grayscale opacity-80 transition-all duration-700 hover:scale-105 hover:grayscale-0 hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-peach-500 mix-blend-multiply opacity-10 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-cyan-500 mix-blend-multiply opacity-10 pointer-events-none"></div>
             </motion.div>
 
             <motion.div
@@ -82,7 +82,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex items-baseline justify-between gap-4 border-b-2 border-ink-200/32 pb-2"
             >
-              <span className="font-display text-xl font-bold text-cream-100">Vitals</span>
+              <span className="font-display text-xl font-bold text-ice-100">Vitals</span>
             </motion.div>
 
             <dl className="flex flex-col gap-4">
@@ -93,9 +93,9 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="grid grid-cols-[88px_1fr] items-baseline gap-4 border-b border-ink-200/18 pb-3"
               >
-                <dt className="font-mono text-[10px] tracking-[0.22em] uppercase text-peach-300">Based in</dt>
+                <dt className="font-mono text-[10px] tracking-[0.22em] uppercase text-cyan-300">Based in</dt>
                 <dd className="flex flex-col gap-0.5">
-                  <span className="font-display text-base font-semibold italic text-cream-100">{personalInfo.location}</span>
+                  <span className="font-display text-base font-semibold italic text-ice-100">{personalInfo.location}</span>
                 </dd>
               </motion.div>
               <motion.div
@@ -105,9 +105,9 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.7 }}
                 className="grid grid-cols-[88px_1fr] items-baseline gap-4 border-b border-ink-200/18 pb-3"
               >
-                <dt className="font-mono text-[10px] tracking-[0.22em] uppercase text-peach-300">Open to</dt>
+                <dt className="font-mono text-[10px] tracking-[0.22em] uppercase text-cyan-300">Open to</dt>
                 <dd className="flex flex-col gap-0.5">
-                  <span className="font-display text-base font-semibold italic text-cream-100">{personalInfo.availability}</span>
+                  <span className="font-display text-base font-semibold italic text-ice-100">{personalInfo.availability}</span>
                 </dd>
               </motion.div>
             </dl>

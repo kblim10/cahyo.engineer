@@ -11,7 +11,7 @@ export default function Skills() {
         {/* Marquee Track */}
         <div className="mb-20 border-y border-ink-200/16 py-5 md:mb-32">
           <div className="flex items-center gap-5">
-            <span className="hidden font-mono text-[10px] tracking-[0.28em] uppercase text-peach-300 md:inline-flex md:shrink-0">
+            <span className="hidden font-mono text-[10px] tracking-[0.28em] uppercase text-cyan-300 md:inline-flex md:shrink-0">
               → Tech Stack
             </span>
             <div className="marquee-track" style={{ "--mq-speed": "48s", "--mq-gap": "28px" } as React.CSSProperties}>
@@ -20,7 +20,7 @@ export default function Skills() {
                   {techMarquee.map((tech) => (
                     <span key={tech} className="flex items-center gap-7 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-200">
                       <span>{tech}</span>
-                      <span className="text-peach-400">·</span>
+                      <span className="text-cyan-400">·</span>
                     </span>
                   ))}
                 </div>
@@ -28,7 +28,7 @@ export default function Skills() {
                   {techMarquee.map((tech) => (
                     <span key={`${tech}-dup`} className="flex items-center gap-7 font-mono text-[11px] tracking-[0.22em] uppercase text-ink-200">
                       <span>{tech}</span>
-                      <span className="text-peach-400">·</span>
+                      <span className="text-cyan-400">·</span>
                     </span>
                   ))}
                 </div>
@@ -64,26 +64,26 @@ export default function Skills() {
                     transition={{ duration: 0.8, delay: 0.1 * index }}
                     className="flex flex-col gap-4 pl-6 relative"
                   >
-                    <span aria-hidden="true" className="absolute left-[-2px] top-0 bottom-0 w-px bg-gradient-to-b from-peach-400/60 to-transparent"></span>
-                    <span aria-hidden="true" className="absolute left-[-4px] top-1 h-1.5 w-1.5 rounded-full bg-peach-400"></span>
+                    <span aria-hidden="true" className="absolute left-[-2px] top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/60 to-transparent"></span>
+                    <span aria-hidden="true" className="absolute left-[-4px] top-1 h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
                     
                     <div>
-                      <h4 className="font-display text-2xl font-semibold text-cream-100 md:text-3xl">{award.title}</h4>
-                      <p className="text-lg text-peach-300 font-serif italic mt-2">{award.event}</p>
+                      <h4 className="font-display text-2xl font-semibold text-ice-100 md:text-3xl">{award.title}</h4>
+                      <p className="text-lg text-cyan-300 font-serif italic mt-2">{award.event}</p>
                     </div>
                     
                     <div className="flex flex-wrap items-center gap-4 border-t border-dashed border-ink-200/24 pt-4 mt-2">
                       <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-ink-200">{award.organizer}</span>
-                      <span className="font-mono text-[10px] tracking-[0.28em] text-peach-400">•</span>
+                      <span className="font-mono text-[10px] tracking-[0.28em] text-cyan-400">•</span>
                       <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-ink-200">{award.year}</span>
-                      <span className="font-mono text-[10px] tracking-[0.28em] text-peach-400">•</span>
+                      <span className="font-mono text-[10px] tracking-[0.28em] text-cyan-400">•</span>
                       <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-ink-200">{award.scope}</span>
                     </div>
                   </motion.div>
                 ))}
               </div>
               <aside>
-                <p className="text-lg leading-[1.65] text-ink-200 font-serif border-l-2 border-peach-300/36 pl-6">
+                <p className="text-lg leading-[1.65] text-ink-200 font-serif border-l-2 border-cyan-300/36 pl-6">
                   &quot;Excellence is not an act, but a habit.&quot; Recognition from international competitions reflects a dedication to quality and innovative problem solving.
                 </p>
               </aside>

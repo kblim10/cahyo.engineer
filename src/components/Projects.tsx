@@ -25,9 +25,9 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display max-w-[16ch] text-5xl font-semibold leading-[1.0] tracking-[-0.03em] text-balance text-cream-100 md:text-7xl lg:text-[5.5rem]"
+            className="font-display max-w-[16ch] text-5xl font-semibold leading-[1.0] tracking-[-0.03em] text-balance text-ice-100 md:text-7xl lg:text-[5.5rem]"
           >
-            Selected <span className="italic text-peach-300">Projects</span>
+            Selected <span className="italic text-cyan-300">Projects</span>
           </motion.h2>
         </div>
 
@@ -42,18 +42,18 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 + idx * 0.1 }}
-              className="group flex flex-col gap-6 rounded-2xl border border-ink-800 bg-ink-900/40 p-6 md:p-8 transition-colors hover:border-peach-300/30 hover:bg-ink-800/60"
+              className="group flex flex-col gap-6 rounded-2xl border border-ink-800 bg-ink-900/40 p-6 md:p-8 transition-colors hover:border-cyan-300/30 hover:bg-ink-800/60"
             >
               <div className="flex flex-col gap-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-peach-300">
+                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-cyan-300">
                     {project.category}
                   </span>
                   <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-ink-200">
                     {project.period}
                   </span>
                 </div>
-                <h3 className="font-display text-3xl font-semibold text-cream-100 group-hover:text-peach-200 transition-colors">
+                <h3 className="font-display text-3xl font-semibold text-ice-100 group-hover:text-cyan-200 transition-colors">
                   {project.title}
                 </h3>
                 <p className="font-serif italic text-ink-200 text-lg">

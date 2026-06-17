@@ -25,9 +25,9 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display max-w-[16ch] text-5xl font-semibold leading-[1.0] tracking-[-0.03em] text-balance text-cream-100 md:text-7xl lg:text-[5.5rem]"
+            className="font-display max-w-[16ch] text-5xl font-semibold leading-[1.0] tracking-[-0.03em] text-balance text-ice-100 md:text-7xl lg:text-[5.5rem]"
           >
-            Experience & <span className="italic text-peach-300">Education</span>
+            Experience & <span className="italic text-cyan-300">Education</span>
           </motion.h2>
         </div>
 
@@ -41,17 +41,17 @@ export default function Experience() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-peach-300">Professional</span>
+                <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-cyan-300">Professional</span>
                 <span className="h-px flex-1 bg-gradient-to-r from-ink-200/28 to-transparent"></span>
               </div>
               <ol className="relative flex flex-col gap-8 pl-6">
-                <span aria-hidden="true" className="absolute left-1.5 top-2 bottom-2 w-px bg-gradient-to-b from-peach-400/60 to-transparent"></span>
+                <span aria-hidden="true" className="absolute left-1.5 top-2 bottom-2 w-px bg-gradient-to-b from-cyan-400/60 to-transparent"></span>
                 {experiences.map((exp, idx) => (
                   <li key={idx} className="relative flex flex-col gap-2">
-                    <span aria-hidden="true" className="absolute left-[-22px] top-[0.4em] inline-block h-1.5 w-1.5 rounded-full bg-peach-400"></span>
+                    <span aria-hidden="true" className="absolute left-[-22px] top-[0.4em] inline-block h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
                     <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-5">
-                      <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-peach-300 w-28 shrink-0">{exp.period}</span>
-                      <span className="text-[17px] leading-snug text-cream-100 font-display font-semibold">{exp.role} <span className="font-serif italic text-ink-200 font-normal">at {exp.company}</span></span>
+                      <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-cyan-300 w-28 shrink-0">{exp.period}</span>
+                      <span className="text-[17px] leading-snug text-ice-100 font-display font-semibold">{exp.role} <span className="font-serif italic text-ink-200 font-normal">at {exp.company}</span></span>
                     </div>
                     <div className="md:pl-[8.25rem]">
                       <p className="text-[15px] leading-relaxed text-ink-200 mb-4">{exp.description}</p>
@@ -73,17 +73,17 @@ export default function Experience() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-peach-300">Education</span>
+                <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-cyan-300">Education</span>
                 <span className="h-px flex-1 bg-gradient-to-r from-ink-200/28 to-transparent"></span>
               </div>
               <ol className="relative flex flex-col gap-8 pl-6">
-                <span aria-hidden="true" className="absolute left-1.5 top-2 bottom-2 w-px bg-gradient-to-b from-peach-400/60 to-transparent"></span>
+                <span aria-hidden="true" className="absolute left-1.5 top-2 bottom-2 w-px bg-gradient-to-b from-cyan-400/60 to-transparent"></span>
                 {education.map((edu, idx) => (
                   <li key={idx} className="relative flex flex-col gap-2">
-                    <span aria-hidden="true" className="absolute left-[-22px] top-[0.4em] inline-block h-1.5 w-1.5 rounded-full bg-peach-400"></span>
+                    <span aria-hidden="true" className="absolute left-[-22px] top-[0.4em] inline-block h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
                     <div className="flex flex-col gap-1">
-                      <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-peach-300">{edu.year}</span>
-                      <span className="text-[17px] leading-snug text-cream-100 font-display font-semibold mt-1">{edu.degree}</span>
+                      <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-cyan-300">{edu.year}</span>
+                      <span className="text-[17px] leading-snug text-ice-100 font-display font-semibold mt-1">{edu.degree}</span>
                       <span className="text-[15px] leading-snug text-ink-200 font-serif italic">{edu.institution}</span>
                     </div>
                     <div>
