@@ -6,7 +6,6 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll, Stars } from "@react-three/drei";
@@ -43,7 +42,6 @@ export default function Home() {
                 <div className="pointer-events-auto"><Skills /></div>
                 <div className="pointer-events-auto"><Experience /></div>
                 <div className="pointer-events-auto"><Projects /></div>
-                <div className="pointer-events-auto"><Contact /></div>
                 <div className="pointer-events-auto"><Footer /></div>
               </div>
             </Scroll>
