@@ -17,7 +17,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -26,48 +26,45 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass-card mx-4 mt-4 rounded-2xl"
-          : "bg-transparent"
+      transition={{ duration: 0.8 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "bg-background/95 backdrop-blur-xl border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="section-container">
-        <div className="flex items-center justify-between h-20">
+      <div className="section-wide">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <a
             href="#"
-            className="text-2xl font-bold gradient-accent hover:opacity-80 transition-opacity"
+            className="text-xl font-bold tracking-tight hover:opacity-60 transition-opacity"
           >
-            cahyo<span className="text-accent">.</span>
+            cahyo<span className="text-muted">.</span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Nav - spacing proper */}
+          <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-muted hover:text-foreground transition-colors relative group"
+                className="text-sm uppercase tracking-widest text-muted hover:text-foreground transition-colors"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
               </a>
             ))}
             <a
               href="/CV-Muhamad%20Cahyo.pdf"
               target="_blank"
-              className="btn-primary !py-2 !px-6 text-sm"
+              className="btn !py-3 !px-8 text-sm"
             >
               Resume
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 flex items-center justify-center hover:text-accent transition-colors"
+            className="md:hidden"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -77,29 +74,21 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden glass-card mt-4 mx-4 rounded-2xl overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="md:hidden border-t border-border bg-background"
         >
-          <div className="p-6 space-y-4">
+          <div className="section-wide py-8 space-y-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-muted hover:text-foreground transition-colors"
+                className="block text-sm uppercase tracking-widest text-muted hover:text-foreground transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <a
-              href="/CV-Muhamad%20Cahyo.pdf"
-              target="_blank"
-              className="btn-primary w-full justify-center !py-3"
-            >
-              Resume
-            </a>
           </div>
         </motion.div>
       )}

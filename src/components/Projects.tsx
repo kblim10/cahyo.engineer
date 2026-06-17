@@ -2,60 +2,49 @@
 
 import { projects } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { ExternalLink, Folder } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="section-container">
+    <section id="projects" className="py-32">
+      <div className="section-wide">
         <AnimatedCard>
-          <h2 className="section-title gradient-text text-center mb-16">
-            Featured Projects
-          </h2>
+          <h2 className="section-title gradient-text mb-24">Projects</h2>
         </AnimatedCard>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Projects grid - 2 columns, spacious */}
+        <div className="grid md:grid-cols-2 gap-12">
           {projects.map((project, idx) => (
             <AnimatedCard key={project.title} delay={0.1 + idx * 0.1}>
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card p-8 block h-full group"
+                className="minimal-card block group"
               >
-                {/* Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Folder size={28} className="text-accent" />
+                {/* Header dengan spacing */}
+                <div className="flex items-start justify-between mb-12">
+                  <div>
+                    <div className="text-sm uppercase tracking-widest text-muted mb-4">
+                      {project.category} • {project.period}
+                    </div>
+                    <h3 className="text-3xl font-bold mb-4 group-hover:text-muted transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-lg text-muted">{project.role}</p>
                   </div>
-                  <ExternalLink
-                    size={20}
-                    className="text-muted group-hover:text-accent transition-colors"
-                  />
+                  <ArrowUpRight size={32} className="text-muted group-hover:text-foreground transition-colors" />
                 </div>
-
-                {/* Category & Period */}
-                <div className="flex items-center gap-2 mb-4 text-xs text-muted">
-                  <span className="px-3 py-1 bg-accent/10 rounded-full">{project.category}</span>
-                  <span>•</span>
-                  <span>{project.period}</span>
-                </div>
-
-                {/* Title & Role */}
-                <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-accent mb-4">{project.role}</p>
 
                 {/* Description */}
-                <p className="text-muted text-sm leading-relaxed mb-6">
+                <p className="text-lg text-muted leading-loose mb-12">
                   {project.description}
                 </p>
 
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2">
+                {/* Tech dengan spacing */}
+                <div className="flex flex-wrap gap-3">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="tech-badge !text-xs !py-1 !px-3">
+                    <span key={tech} className="tech-badge">
                       {tech}
                     </span>
                   ))}
@@ -67,15 +56,15 @@ export default function Projects() {
 
         {/* CTA */}
         <AnimatedCard delay={0.6}>
-          <div className="text-center mt-12">
+          <div className="text-center mt-24">
             <a
               href="https://github.com/kblim10"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-muted hover:text-accent transition-colors"
+              className="text-sm uppercase tracking-widest text-muted hover:text-foreground transition-colors inline-flex items-center gap-3"
             >
-              View more on GitHub
-              <ExternalLink size={16} />
+              View More on GitHub
+              <ArrowUpRight size={16} />
             </a>
           </div>
         </AnimatedCard>

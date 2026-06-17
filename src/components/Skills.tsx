@@ -2,7 +2,6 @@
 
 import { skills, awards } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { Trophy } from "lucide-react";
 
 export default function Skills() {
   const allSkills = [
@@ -17,56 +16,53 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-24 relative">
-      <div className="section-container">
+    <section id="skills" className="py-32">
+      <div className="section-wide">
         <AnimatedCard>
-          <h2 className="section-title gradient-text text-center mb-16">
-            Tech Stack
-          </h2>
+          <h2 className="section-title gradient-text mb-24">Skills</h2>
         </AnimatedCard>
 
-        {/* Skills Cloud */}
+        {/* Skills dengan spacing proper */}
         <AnimatedCard delay={0.2}>
-          <div className="glass-card p-8 mb-12">
-            <div className="flex flex-wrap gap-3 justify-center">
-              {allSkills.map((skill, idx) => (
-                <span
-                  key={idx}
-                  className="tech-badge"
-                  style={{ animationDelay: `${idx * 0.05}s` }}
-                >
+          <div className="minimal-card mb-24">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {allSkills.map((skill) => (
+                <div key={skill} className="tech-badge text-center">
                   {skill}
-                </span>
+                </div>
               ))}
             </div>
           </div>
         </AnimatedCard>
 
-        {/* Awards */}
+        {/* Awards - balanced layout */}
         {awards.length > 0 && (
           <AnimatedCard delay={0.4}>
-            <div className="glass-card p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center">
-                  <Trophy size={24} className="text-amber-400" />
+            <div className="minimal-card">
+              <div className="grid lg:grid-cols-2 gap-24">
+                <div>
+                  <div className="text-6xl font-bold mb-8">Awards</div>
+                  <p className="text-xl text-muted">
+                    Recognition for excellence in international competitions
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold">Awards & Recognition</h3>
+                
+                <div className="space-y-12">
+                  {awards.map((award) => (
+                    <div key={award.title} className="border-l border-border pl-8">
+                      <h4 className="text-2xl font-bold mb-3">{award.title}</h4>
+                      <p className="text-lg text-muted mb-4">{award.event}</p>
+                      <div className="flex flex-wrap gap-6 text-sm uppercase tracking-widest text-muted">
+                        <span>{award.organizer}</span>
+                        <span>•</span>
+                        <span>{award.year}</span>
+                        <span>•</span>
+                        <span>{award.scope}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              
-              {awards.map((award) => (
-                <div key={award.title} className="border-l-4 border-amber-500/30 pl-6 py-4">
-                  <h4 className="text-xl font-semibold mb-2">{award.title}</h4>
-                  <p className="text-muted mb-2">{award.event}</p>
-                  <div className="flex flex-wrap gap-3 text-sm">
-                    <span className="text-muted">{award.organizer}</span>
-                    <span className="text-border">•</span>
-                    <span className="text-muted">{award.year}</span>
-                    <span className="px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">
-                      {award.scope}
-                    </span>
-                  </div>
-                </div>
-              ))}
             </div>
           </AnimatedCard>
         )}

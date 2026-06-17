@@ -1,15 +1,9 @@
 "use client";
 
-import { personalInfo, socials } from "@/lib/data";
+import { personalInfo } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { useState } from "react";
-
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  github: Github,
-  linkedin: Linkedin,
-  mail: Mail,
-};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -25,107 +19,112 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-50" />
-      
-      <div className="section-container relative z-10">
+    <section id="contact" className="py-32">
+      <div className="section-wide">
         <AnimatedCard>
-          <h2 className="section-title gradient-text text-center mb-16">
-            Get in Touch
-          </h2>
+          <h2 className="section-title gradient-text mb-24">Contact</h2>
         </AnimatedCard>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* Form */}
-          <AnimatedCard delay={0.2} className="lg:col-span-2">
-            <div className="glass-card p-8">
-              <h3 className="text-xl font-bold mb-6">Send me a message</h3>
+        {/* Two columns - balanced */}
+        <div className="grid lg:grid-cols-2 gap-24">
+          {/* Left - Info */}
+          <AnimatedCard delay={0.2}>
+            <div className="minimal-card">
+              <div className="text-6xl font-bold mb-12">
+                Let's work<br />together
+              </div>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm text-muted mb-2">Name</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-surface rounded-xl border border-white/10 focus:border-accent outline-none transition-colors"
-                      placeholder="Your name"
-                    />
+              <p className="text-xl text-muted mb-12 leading-loose">
+                Have an interesting project or opportunity? I'd love to hear about it. 
+                Send me a message and I'll get back to you.
+              </p>
+
+              <div className="space-y-8">
+                <div>
+                  <div className="text-sm uppercase tracking-widest text-muted mb-2">
+                    Email
                   </div>
-                  
-                  <div>
-                    <label className="block text-sm text-muted mb-2">Email</label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-surface rounded-xl border border-white/10 focus:border-accent outline-none transition-colors"
-                      placeholder="your@email.com"
-                    />
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-lg hover:text-muted transition-colors"
+                  >
+                    {personalInfo.email}
+                  </a>
+                </div>
+
+                <div>
+                  <div className="text-sm uppercase tracking-widest text-muted mb-2">
+                    Status
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="status-dot" />
+                    <span className="text-lg">{personalInfo.availability}</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm text-muted mb-2">Message</label>
+                  <div className="text-sm uppercase tracking-widest text-muted mb-2">
+                    Location
+                  </div>
+                  <span className="text-lg">{personalInfo.location}</span>
+                </div>
+              </div>
+            </div>
+          </AnimatedCard>
+
+          {/* Right - Form */}
+          <AnimatedCard delay={0.4}>
+            <div className="minimal-card">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div>
+                  <label className="block text-sm uppercase tracking-widest text-muted mb-4">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-6 py-4 bg-background border border-border focus:border-foreground outline-none transition-colors text-lg"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm uppercase tracking-widest text-muted mb-4">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-6 py-4 bg-background border border-border focus:border-foreground outline-none transition-colors text-lg"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm uppercase tracking-widest text-muted mb-4">
+                    Message
+                  </label>
                   <textarea
                     required
-                    rows={5}
+                    rows={6}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-surface rounded-xl border border-white/10 focus:border-accent outline-none transition-colors resize-none"
+                    className="w-full px-6 py-4 bg-background border border-border focus:border-foreground outline-none transition-colors text-lg resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>
 
-                <button type="submit" className="btn-primary w-full justify-center">
-                  <Send size={18} />
+                <button type="submit" className="btn btn-primary w-full justify-center text-base">
+                  <Send size={20} />
                   Send Message
                 </button>
               </form>
             </div>
           </AnimatedCard>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Status */}
-            <AnimatedCard delay={0.3}>
-              <div className="glass-card p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="status-dot" />
-                  <span className="text-sm text-muted">Status</span>
-                </div>
-                <p className="font-semibold mb-2">{personalInfo.availability}</p>
-                <p className="text-sm text-muted">{personalInfo.location}</p>
-              </div>
-            </AnimatedCard>
-
-            {/* Social Links */}
-            <AnimatedCard delay={0.4}>
-              <div className="glass-card p-6">
-                <h4 className="font-semibold mb-4">Connect</h4>
-                <div className="space-y-3">
-                  {socials.map((social) => {
-                    const Icon = iconMap[social.icon] || Mail;
-                    return (
-                      <a
-                        key={social.name}
-                        href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-3 rounded-xl bg-surface hover:bg-surface-light transition-colors group"
-                      >
-                        <Icon size={20} className="text-muted group-hover:text-accent transition-colors" />
-                        <span className="text-sm">{social.name}</span>
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-            </AnimatedCard>
-          </div>
         </div>
       </div>
     </section>

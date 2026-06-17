@@ -2,46 +2,43 @@
 
 import { experiences, education } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      
-      <div className="section-container relative z-10">
+    <section id="experience" className="py-32">
+      <div className="section-wide">
         <AnimatedCard>
-          <h2 className="section-title gradient-text text-center mb-16">
-            Experience & Education
-          </h2>
+          <h2 className="section-title gradient-text mb-24">Experience</h2>
         </AnimatedCard>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Experience */}
+        {/* Two columns - balanced */}
+        <div className="grid lg:grid-cols-2 gap-24">
+          {/* Left - Experience */}
           <div>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <Briefcase size={24} className="text-accent" />
-              Experience
-            </h3>
+            <div className="text-sm uppercase tracking-widest text-muted mb-12">
+              Professional
+            </div>
             
             {experiences.map((exp, idx) => (
               <AnimatedCard key={idx} delay={0.2}>
-                <div className="glass-card p-6 mb-4">
-                  <div className="flex justify-between items-start mb-3">
+                <div className="minimal-card mb-12">
+                  <div className="flex justify-between items-start mb-8">
                     <div>
-                      <h4 className="font-semibold text-lg">{exp.role}</h4>
-                      <p className="text-accent">{exp.company}</p>
+                      <h3 className="text-2xl font-bold mb-2">{exp.role}</h3>
+                      <p className="text-lg text-muted">{exp.company}</p>
                     </div>
-                    <span className="text-sm text-muted">{exp.period}</span>
+                    <span className="text-sm uppercase tracking-widest text-muted">
+                      {exp.period}
+                    </span>
                   </div>
                   
-                  <p className="text-sm text-muted leading-relaxed mb-4">
+                  <p className="text-lg text-muted leading-loose mb-8">
                     {exp.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-3">
                     {exp.tech.slice(0, 6).map((t) => (
-                      <span key={t} className="tech-badge !text-xs !py-1 !px-3">
+                      <span key={t} className="tech-badge">
                         {t}
                       </span>
                     ))}
@@ -51,25 +48,26 @@ export default function Experience() {
             ))}
           </div>
 
-          {/* Education */}
+          {/* Right - Education */}
           <div>
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <GraduationCap size={24} className="text-emerald-400" />
+            <div className="text-sm uppercase tracking-widest text-muted mb-12">
               Education
-            </h3>
+            </div>
             
             {education.map((edu, idx) => (
               <AnimatedCard key={idx} delay={0.4}>
-                <div className="glass-card p-6">
-                  <div className="flex justify-between items-start mb-3">
+                <div className="minimal-card">
+                  <div className="flex justify-between items-start mb-8">
                     <div>
-                      <h4 className="font-semibold text-lg">{edu.degree}</h4>
-                      <p className="text-emerald-400">{edu.institution}</p>
+                      <h3 className="text-2xl font-bold mb-2">{edu.degree}</h3>
+                      <p className="text-lg text-muted">{edu.institution}</p>
                     </div>
-                    <span className="text-sm text-muted">{edu.year}</span>
+                    <span className="text-sm uppercase tracking-widest text-muted">
+                      {edu.year}
+                    </span>
                   </div>
                   
-                  <p className="text-sm text-muted leading-relaxed">
+                  <p className="text-lg text-muted leading-loose">
                     {edu.description}
                   </p>
                 </div>

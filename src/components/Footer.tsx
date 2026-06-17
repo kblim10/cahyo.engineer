@@ -6,42 +6,76 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-white/10">
+    <footer className="py-24 border-t border-border">
       <FadeIn>
-        <div className="section-container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="section-wide">
+          <div className="grid md:grid-cols-3 gap-12">
             {/* Brand */}
-            <div className="text-center md:text-left">
-              <div className="text-xl font-bold gradient-accent mb-2">
-                cahyo<span className="text-accent">.</span>
+            <div>
+              <div className="text-2xl font-bold mb-4">
+                cahyo<span className="text-muted">.</span>
               </div>
-              <p className="text-sm text-muted">
-                Building scalable systems & reliable cloud architectures
+              <p className="text-muted">
+                Building scalable systems &<br />reliable cloud architectures
               </p>
             </div>
 
             {/* Links */}
-            <div className="flex flex-wrap items-center justify-center gap-6">
-              <a href="#about" className="text-sm text-muted hover:text-foreground transition-colors">
-                About
-              </a>
-              <a href="#skills" className="text-sm text-muted hover:text-foreground transition-colors">
-                Skills
-              </a>
-              <a href="#experience" className="text-sm text-muted hover:text-foreground transition-colors">
-                Experience
-              </a>
-              <a href="#projects" className="text-sm text-muted hover:text-foreground transition-colors">
-                Projects
-              </a>
-              <a href="#contact" className="text-sm text-muted hover:text-foreground transition-colors">
-                Contact
-              </a>
+            <div>
+              <div className="text-sm uppercase tracking-widest text-muted mb-6">
+                Navigate
+              </div>
+              <div className="space-y-3">
+                {["About", "Skills", "Experience", "Projects", "Contact"].map((link) => (
+                  <a
+                    key={link}
+                    href={`#${link.toLowerCase()}`}
+                    className="block text-muted hover:text-foreground transition-colors"
+                  >
+                    {link}
+                  </a>
+                ))}
+              </div>
             </div>
 
-            {/* Copyright */}
+            {/* Social */}
+            <div>
+              <div className="text-sm uppercase tracking-widest text-muted mb-6">
+                Connect
+              </div>
+              <div className="space-y-3">
+                <a
+                  href="https://github.com/kblim10"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-muted hover:text-foreground transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://linkedin.com/in/kblim-cahyo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-muted hover:text-foreground transition-colors"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="mailto:putrarifki705@gmail.com"
+                  className="block text-muted hover:text-foreground transition-colors"
+                >
+                  Email
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-24 pt-12 border-t border-border flex justify-between items-center">
             <p className="text-sm text-muted">
-              © {year} All rights reserved
+              © {year} Muhamad Cahyo Rifki Dwi Putra
+            </p>
+            <p className="text-sm text-muted">
+              All rights reserved
             </p>
           </div>
         </div>
