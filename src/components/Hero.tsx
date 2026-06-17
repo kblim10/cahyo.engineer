@@ -51,8 +51,8 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-6 leading-[1.1] drop-shadow-2xl"
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter mb-6 leading-[1.1] drop-shadow-xl"
           >
             <span className="text-foreground">{personalInfo.nickname}</span>
             <span className="text-accent">.</span>
@@ -105,27 +105,23 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="mt-20 mx-auto lg:mx-0 max-w-xl cursor-crosshair group perspective-[1200px]"
+            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-16 mx-auto lg:mx-0 max-w-xl group"
           >
-            <div className="code-block p-6 text-left transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-border/30 group-hover:border-accent/40 relative bg-black/40 backdrop-blur-xl rounded-xl overflow-hidden"
-                 style={{ transform: "translateZ(40px)" }}>
+            <div className="code-block p-6 text-left transition-all duration-500 hover:bg-card/60 border border-border/30 hover:border-accent/40 relative bg-card/40 backdrop-blur-md rounded-xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               
-              <div className="flex items-center gap-2.5 mb-5" style={{ transform: "translateZ(20px)" }}>
-                <div className="w-3.5 h-3.5 rounded-full bg-red-500/80" />
-                <div className="w-3.5 h-3.5 rounded-full bg-yellow-500/80" />
-                <div className="w-3.5 h-3.5 rounded-full bg-green-500/80" />
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
                 <span className="text-xs text-muted-foreground ml-3 font-mono tracking-wider opacity-60">
                   zsh - root@cahyo-cloud
                 </span>
               </div>
-              <div className="space-y-3 text-sm md:text-base font-mono leading-relaxed" style={{ transform: "translateZ(30px)" }}>
+              <div className="space-y-3 text-sm md:text-base font-mono leading-relaxed">
                 <p>
                   <span className="text-green-400">root</span>
                   <span className="text-muted-foreground">@</span>

@@ -76,13 +76,13 @@ const skillSections = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-32 px-6 relative z-10 pointer-events-none">
-      <div className="max-w-7xl mx-auto pointer-events-auto">
+    <section id="skills" className="py-24 px-6 relative z-10 pointer-events-none">
+      <div className="max-w-6xl mx-auto pointer-events-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-4 mb-20">
-            <div className="w-16 h-px bg-accent/50" />
-            <span className="font-mono text-base text-accent uppercase tracking-widest">02.</span>
-            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter">Skills & Toolkit<span className="text-accent">.</span></h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="w-12 h-px bg-accent/50" />
+            <span className="font-mono text-sm text-accent uppercase tracking-widest">02.</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Skills & Toolkit<span className="text-accent">.</span></h2>
           </div>
         </AnimatedCard>
 
@@ -105,7 +105,7 @@ export default function Skills() {
         </AnimatedCard>
 
         {/* Skills Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillSections.map((section, idx) => (
             <AnimatedCard key={section.title} delay={0.1 + idx * 0.05}>
               <div className="bento-card shimmer p-6 h-full">

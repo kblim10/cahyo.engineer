@@ -6,13 +6,13 @@ import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-32 px-6 relative z-10 pointer-events-none">
-      <div className="max-w-7xl mx-auto pointer-events-auto">
+    <section id="experience" className="py-24 px-6 relative z-10 pointer-events-none">
+      <div className="max-w-6xl mx-auto pointer-events-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-4 mb-20">
-            <div className="w-16 h-px bg-accent/50" />
-            <span className="font-mono text-base text-accent uppercase tracking-widest">03.</span>
-            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter">Experience<span className="text-accent">.</span></h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="w-12 h-px bg-accent/50" />
+            <span className="font-mono text-sm text-accent uppercase tracking-widest">03.</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Experience<span className="text-accent">.</span></h2>
           </div>
         </AnimatedCard>
 
@@ -28,7 +28,7 @@ export default function Experience() {
                     {/* Timeline dot */}
                     <div className="absolute -left-[calc(3rem+7px)] top-8 w-3.5 h-3.5 rounded-full border-2 border-accent bg-background hidden md:block" />
 
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2" style={{ transform: "translateZ(20px)" }}>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center md:hidden">
                           <Briefcase size={14} className="text-accent" />
@@ -43,11 +43,11 @@ export default function Experience() {
                       </span>
                     </div>
 
-                    <p className="text-xs text-muted leading-relaxed mb-4" style={{ transform: "translateZ(10px)" }}>
+                    <p className="text-xs text-muted leading-relaxed mb-4">
                       {exp.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2" style={{ transform: "translateZ(15px)" }}>
+                    <div className="flex flex-wrap gap-2">
                       {exp.tech.map((t) => (
                         <span key={t} className="tech-badge text-[10px]">
                           {t}

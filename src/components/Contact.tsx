@@ -28,14 +28,14 @@ export default function Contact() {
     <section id="contact" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-3 mb-12">
-            <div className="section-line" />
-            <span className="font-mono text-sm text-accent">05.</span>
-            <h2 className="text-2xl font-bold">Contact</h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="w-12 h-px bg-accent/50" />
+            <span className="font-mono text-sm text-accent uppercase tracking-widest">05.</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter">Contact<span className="text-accent">.</span></h2>
           </div>
         </AnimatedCard>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Message card */}
           <AnimatedCard className="lg:col-span-2" delay={0.1}>
             <div className="bento-card shimmer p-6 h-full">

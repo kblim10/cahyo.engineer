@@ -11,18 +11,18 @@ export default function About() {
   const [showCard, setShowCard] = useState(false);
 
   return (
-    <section id="about" className="py-32 px-6 relative z-10 pointer-events-none">
-      <div className="max-w-7xl mx-auto pointer-events-auto">
+    <section id="about" className="py-24 px-6 relative z-10 pointer-events-none">
+      <div className="max-w-6xl mx-auto pointer-events-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-4 mb-20">
-            <div className="w-16 h-px bg-accent/50" />
-            <span className="font-mono text-base text-accent uppercase tracking-widest">01.</span>
-            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter">About Me<span className="text-accent">.</span></h2>
+          <div className="flex items-center gap-4 mb-16">
+            <div className="w-12 h-px bg-accent/50" />
+            <span className="font-mono text-sm text-accent uppercase tracking-widest">01.</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter">About Me<span className="text-accent">.</span></h2>
           </div>
         </AnimatedCard>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Bio - spans 2 cols */}
           <AnimatedCard className="lg:col-span-2 md:col-span-2" delay={0.1}>
             <div className="bento-card shimmer p-6 h-full">
