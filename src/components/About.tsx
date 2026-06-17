@@ -12,28 +12,24 @@ export default function About() {
       title: "Backend Development",
       description:
         "RESTful APIs with Node.js & Express.js, database management with MongoDB & MySQL, and Redis caching for optimal performance.",
-      color: "indigo",
     },
     {
       icon: Cloud,
       title: "Cloud Infrastructure",
       description:
         "Kubernetes cluster management, Docker containerization, Linux server administration, and Cloudflare tunneling.",
-      color: "purple",
     },
     {
       icon: Terminal,
       title: "DevOps & CI/CD",
       description:
         "GitHub Actions pipelines, Helm charts, Prometheus & Grafana monitoring, and automated Bitnami deployments.",
-      color: "pink",
     },
     {
       icon: Radio,
       title: "IoT & Messaging",
       description:
         "ESP32 programming, EMQX MQTT broker, Telegraf data collection, and seamless hardware-software integration.",
-      color: "cyan",
     },
   ];
 
@@ -82,8 +78,8 @@ export default function About() {
           {specialties.map((specialty, idx) => (
             <AnimatedCard key={specialty.title} delay={0.2 + idx * 0.1}>
               <div className="bento-card shimmer p-6 h-full group">
-                <div className={`w-12 h-12 rounded-xl bg-${specialty.color}-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <specialty.icon size={24} className={`text-${specialty.color}-400`} />
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <specialty.icon size={24} className="text-accent" />
                 </div>
                 <h3 className="text-lg font-semibold mb-3 group-hover:text-accent transition-colors">
                   {specialty.title}
