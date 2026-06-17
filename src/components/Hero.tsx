@@ -2,156 +2,142 @@
 
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
-import { MapPin, ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 -right-48 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] pointer-events-none" />
+    <section className="min-h-screen flex items-center relative overflow-hidden noise-texture">
+      {/* Gradient background */}
+      <div className="absolute inset-0 grid-bg" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[150px]" />
 
-      <div className="max-w-5xl mx-auto text-center relative z-10">
-        {/* Status badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8"
-        >
-          <span className="status-dot" />
-          <span className="text-xs text-muted font-medium">
-            {personalInfo.availability}
-          </span>
-        </motion.div>
-
-        {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-6xl md:text-8xl font-bold tracking-tight mb-6"
-        >
-          <span className="gradient-text">{personalInfo.name}</span>
-        </motion.h1>
-
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8"
-        >
-          <h2 className="text-2xl md:text-4xl gradient-text-accent font-bold">
-            {personalInfo.title}
-          </h2>
-        </motion.div>
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-8 leading-relaxed"
-        >
-          {personalInfo.tagline}
-        </motion.p>
-
-        {/* Location & CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-        >
-          <div className="flex items-center gap-2 text-sm text-muted">
-            <MapPin size={16} className="text-accent" />
-            <span>{personalInfo.location}</span>
-          </div>
-          <div className="hidden sm:block w-px h-4 bg-border" />
-          <a
-            href="#contact"
-            className="group relative px-8 py-3 bg-accent hover:bg-accent-muted text-white font-medium rounded-full transition-all overflow-hidden"
+      <div className="section-container relative z-10 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="relative z-10">Get in Touch</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-          </a>
-          <a
-            href="#projects"
-            className="px-8 py-3 border border-border hover:border-accent text-foreground hover:text-accent font-medium rounded-full transition-all backdrop-blur-sm"
-          >
-            View Work
-          </a>
-        </motion.div>
+            {/* Status badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 glass-card mb-6">
+              <span className="status-dot" />
+              <span className="text-sm text-muted">{personalInfo.availability}</span>
+            </div>
 
-        {/* Social links */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex items-center justify-center gap-4"
-        >
-          <a
-            href="https://github.com/kblim10"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full border border-border hover:border-accent bg-card/50 backdrop-blur-sm flex items-center justify-center text-muted hover:text-accent transition-all"
-          >
-            <Github size={18} />
-          </a>
-          <a
-            href="https://linkedin.com/in/kblim-cahyo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full border border-border hover:border-accent bg-card/50 backdrop-blur-sm flex items-center justify-center text-muted hover:text-accent transition-all"
-          >
-            <Linkedin size={18} />
-          </a>
-          <a
-            href="mailto:putrarifki705@gmail.com"
-            className="w-10 h-10 rounded-full border border-border hover:border-accent bg-card/50 backdrop-blur-sm flex items-center justify-center text-muted hover:text-accent transition-all"
-          >
-            <Mail size={18} />
-          </a>
-        </motion.div>
+            {/* Name & Title */}
+            <h1 className="text-6xl md:text-7xl font-bold mb-4">
+              <span className="gradient-text">cahyo</span>
+              <span className="text-accent">.</span>
+            </h1>
+            
+            <h2 className="text-2xl md:text-3xl gradient-accent font-semibold mb-6">
+              {personalInfo.title}
+            </h2>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
-        >
-          {[
-            { value: "3", label: "Node Cluster" },
-            { value: "15+", label: "Technologies" },
-            { value: "4", label: "Projects" },
-            { value: "1", label: "Int'l Award" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold gradient-text-accent mb-2">
-                {stat.value}
+            <p className="text-lg text-muted mb-8 leading-relaxed max-w-xl">
+              {personalInfo.tagline}. Specialized in Node.js, Kubernetes, and IoT systems.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 mb-8">
+              <a href="#contact" className="btn-primary">
+                Get in Touch
+                <ArrowDown size={18} />
+              </a>
+              <a href="#projects" className="btn-secondary">
+                View Projects
+              </a>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-4">
+              <a
+                href="https://github.com/kblim10"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 glass-card flex items-center justify-center hover:text-accent transition-colors"
+              >
+                <Github size={20} />
+              </a>
+              <a
+                href="https://linkedin.com/in/kblim-cahyo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 glass-card flex items-center justify-center hover:text-accent transition-colors"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a
+                href="mailto:putrarifki705@gmail.com"
+                className="w-12 h-12 glass-card flex items-center justify-center hover:text-accent transition-colors"
+              >
+                <Mail size={20} />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right side - Profile & Stats */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col items-center lg:items-end"
+          >
+            {/* Profile Image */}
+            <div className="relative mb-8">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-3xl overflow-hidden glass-card p-2">
+                <Image
+                  src="/profile.png"
+                  alt={personalInfo.name}
+                  width={320}
+                  height={320}
+                  className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
+                  priority
+                />
               </div>
-              <div className="text-xs text-muted uppercase tracking-wider">
-                {stat.label}
+              {/* Floating accent */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-4 w-full max-w-md">
+              <div className="glass-card p-6 text-center">
+                <div className="text-4xl font-bold gradient-accent mb-2">3</div>
+                <div className="text-sm text-muted">Node Cluster</div>
+              </div>
+              <div className="glass-card p-6 text-center">
+                <div className="text-4xl font-bold gradient-accent mb-2">15+</div>
+                <div className="text-sm text-muted">Technologies</div>
+              </div>
+              <div className="glass-card p-6 text-center">
+                <div className="text-4xl font-bold gradient-accent mb-2">4</div>
+                <div className="text-sm text-muted">Projects</div>
+              </div>
+              <div className="glass-card p-6 text-center">
+                <div className="text-4xl font-bold gradient-accent mb-2">1</div>
+                <div className="text-sm text-muted">Int'l Award</div>
               </div>
             </div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+        transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
+          className="text-muted"
         >
-          <ArrowDown size={20} className="text-muted" />
+          <ArrowDown size={24} />
         </motion.div>
       </motion.div>
     </section>

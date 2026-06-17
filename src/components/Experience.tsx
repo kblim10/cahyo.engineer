@@ -6,86 +6,76 @@ import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      <div className="section-container relative z-10">
         <AnimatedCard>
-          <div className="flex items-center gap-3 mb-16">
-            <div className="section-line" />
-            <h2 className="text-3xl md:text-4xl font-bold">Experience</h2>
-          </div>
+          <h2 className="section-title gradient-text text-center mb-16">
+            Experience & Education
+          </h2>
         </AnimatedCard>
 
-        {/* Experience Timeline */}
-        <div className="space-y-6 mb-20">
-          {experiences.map((exp, idx) => (
-            <AnimatedCard key={idx} delay={0.1 + idx * 0.1}>
-              <div className="bento-card shimmer p-6 md:p-8">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                      <Briefcase size={20} className="text-accent" />
-                    </div>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Experience */}
+          <div>
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <Briefcase size={24} className="text-accent" />
+              Experience
+            </h3>
+            
+            {experiences.map((exp, idx) => (
+              <AnimatedCard key={idx} delay={0.2}>
+                <div className="glass-card p-6 mb-4">
+                  <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h3 className="text-xl font-bold mb-1">{exp.role}</h3>
-                      <p className="text-accent font-medium">{exp.company}</p>
+                      <h4 className="font-semibold text-lg">{exp.role}</h4>
+                      <p className="text-accent">{exp.company}</p>
                     </div>
+                    <span className="text-sm text-muted">{exp.period}</span>
                   </div>
-                  <span className="text-sm text-muted font-mono whitespace-nowrap">
-                    {exp.period}
-                  </span>
+                  
+                  <p className="text-sm text-muted leading-relaxed mb-4">
+                    {exp.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.slice(0, 6).map((t) => (
+                      <span key={t} className="tech-badge !text-xs !py-1 !px-3">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                <p className="text-sm text-muted leading-relaxed mb-6 ml-16">
-                  {exp.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 ml-16">
-                  {exp.tech.map((t) => (
-                    <span key={t} className="tech-badge">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </AnimatedCard>
-          ))}
-        </div>
-
-        {/* Education */}
-        <AnimatedCard delay={0.3}>
-          <div className="flex items-center gap-3 mb-12">
-            <div className="section-line" />
-            <h3 className="text-2xl font-bold">Education</h3>
+              </AnimatedCard>
+            ))}
           </div>
-        </AnimatedCard>
 
-        <div className="space-y-6">
-          {education.map((edu, idx) => (
-            <AnimatedCard key={idx} delay={0.4 + idx * 0.1}>
-              <div className="bento-card shimmer p-6 md:p-8">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center shrink-0">
-                      <GraduationCap size={20} className="text-emerald-400" />
-                    </div>
+          {/* Education */}
+          <div>
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <GraduationCap size={24} className="text-emerald-400" />
+              Education
+            </h3>
+            
+            {education.map((edu, idx) => (
+              <AnimatedCard key={idx} delay={0.4}>
+                <div className="glass-card p-6">
+                  <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>
-                      <p className="text-emerald-400 font-medium">
-                        {edu.institution}
-                      </p>
+                      <h4 className="font-semibold text-lg">{edu.degree}</h4>
+                      <p className="text-emerald-400">{edu.institution}</p>
                     </div>
+                    <span className="text-sm text-muted">{edu.year}</span>
                   </div>
-                  <span className="text-sm text-muted font-mono whitespace-nowrap">
-                    {edu.year}
-                  </span>
+                  
+                  <p className="text-sm text-muted leading-relaxed">
+                    {edu.description}
+                  </p>
                 </div>
-
-                <p className="text-sm text-muted leading-relaxed ml-16">
-                  {edu.description}
-                </p>
-              </div>
-            </AnimatedCard>
-          ))}
+              </AnimatedCard>
+            ))}
+          </div>
         </div>
       </div>
     </section>

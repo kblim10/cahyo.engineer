@@ -3,93 +3,80 @@
 import { personalInfo } from "@/lib/data";
 import { AnimatedCard } from "./animations";
 import { Code2, Cloud, Terminal, Radio } from "lucide-react";
-import Image from "next/image";
 
 export default function About() {
-  const specialties = [
-    {
-      icon: Code2,
-      title: "Backend Development",
-      description:
-        "RESTful APIs with Node.js & Express.js, database management with MongoDB & MySQL, and Redis caching for optimal performance.",
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Infrastructure",
-      description:
-        "Kubernetes cluster management, Docker containerization, Linux server administration, and Cloudflare tunneling.",
-    },
-    {
-      icon: Terminal,
-      title: "DevOps & CI/CD",
-      description:
-        "GitHub Actions pipelines, Helm charts, Prometheus & Grafana monitoring, and automated Bitnami deployments.",
-    },
-    {
-      icon: Radio,
-      title: "IoT & Messaging",
-      description:
-        "ESP32 programming, EMQX MQTT broker, Telegraf data collection, and seamless hardware-software integration.",
-    },
-  ];
-
   return (
-    <section id="about" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-50" />
+      
+      <div className="section-container relative z-10">
         <AnimatedCard>
-          <div className="flex items-center gap-3 mb-16">
-            <div className="section-line" />
-            <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
-          </div>
+          <h2 className="section-title gradient-text text-center mb-16">
+            About Me
+          </h2>
         </AnimatedCard>
 
-        {/* Bio Card */}
-        <AnimatedCard delay={0.1}>
-          <div className="bento-card shimmer p-8 mb-8">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="shrink-0">
-                <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-accent/20 shadow-xl">
-                  <Image
-                    src="/profile.png"
-                    alt={personalInfo.name}
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
-                  />
+        {/* Main Content */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          {/* Left - Bio */}
+          <AnimatedCard delay={0.2}>
+            <div className="glass-card p-8 h-full">
+              <h3 className="text-2xl font-bold mb-4">{personalInfo.name}</h3>
+              <p className="text-accent font-semibold mb-6">{personalInfo.title}</p>
+              <p className="text-muted leading-relaxed">{personalInfo.bio}</p>
+              
+              <div className="mt-8 pt-8 border-t border-white/10">
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="status-dot" />
+                  <span className="text-muted">{personalInfo.availability}</span>
+                  <span className="text-muted">• {personalInfo.location}</span>
                 </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold mb-2">
-                  {personalInfo.name}
-                </h3>
-                <p className="text-accent font-medium mb-4">
-                  {personalInfo.title}
-                </p>
-                <p className="text-muted leading-relaxed">
-                  {personalInfo.bio}
-                </p>
               </div>
             </div>
-          </div>
-        </AnimatedCard>
+          </AnimatedCard>
 
-        {/* Specialties Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {specialties.map((specialty, idx) => (
-            <AnimatedCard key={specialty.title} delay={0.2 + idx * 0.1}>
-              <div className="bento-card shimmer p-6 h-full group">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <specialty.icon size={24} className="text-accent" />
+          {/* Right - Specialties */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <AnimatedCard delay={0.3}>
+              <div className="glass-card p-6 h-full hover:scale-105 transition-transform">
+                <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+                  <Code2 size={28} className="text-accent" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-accent transition-colors">
-                  {specialty.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  {specialty.description}
-                </p>
+                <h4 className="font-semibold mb-2">Backend Development</h4>
+                <p className="text-sm text-muted">Node.js, Express.js, RESTful APIs, MongoDB, MySQL</p>
               </div>
             </AnimatedCard>
-          ))}
+
+            <AnimatedCard delay={0.4}>
+              <div className="glass-card p-6 h-full hover:scale-105 transition-transform">
+                <div className="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-4">
+                  <Cloud size={28} className="text-purple-400" />
+                </div>
+                <h4 className="font-semibold mb-2">Cloud Infrastructure</h4>
+                <p className="text-sm text-muted">Kubernetes, Docker, Linux, Cloudflare Tunnel</p>
+              </div>
+            </AnimatedCard>
+
+            <AnimatedCard delay={0.5}>
+              <div className="glass-card p-6 h-full hover:scale-105 transition-transform">
+                <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4">
+                  <Terminal size={28} className="text-emerald-400" />
+                </div>
+                <h4 className="font-semibold mb-2">DevOps & CI/CD</h4>
+                <p className="text-sm text-muted">GitHub Actions, Helm, Prometheus, Grafana</p>
+              </div>
+            </AnimatedCard>
+
+            <AnimatedCard delay={0.6}>
+              <div className="glass-card p-6 h-full hover:scale-105 transition-transform">
+                <div className="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4">
+                  <Radio size={28} className="text-cyan-400" />
+                </div>
+                <h4 className="font-semibold mb-2">IoT & Messaging</h4>
+                <p className="text-sm text-muted">ESP32, EMQX MQTT, Telegraf, ArduinoIDE</p>
+              </div>
+            </AnimatedCard>
+          </div>
         </div>
       </div>
     </section>
