@@ -84,7 +84,7 @@ export default function Skills() {
               </div>
               <aside>
                 <p className="text-lg leading-[1.65] text-ink-200 font-serif border-l-2 border-peach-300/36 pl-6">
-                  "Excellence is not an act, but a habit." Recognition from international competitions reflects a dedication to quality and innovative problem solving.
+                  &quot;Excellence is not an act, but a habit.&quot; Recognition from international competitions reflects a dedication to quality and innovative problem solving.
                 </p>
               </aside>
             </div>

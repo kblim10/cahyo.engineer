@@ -50,7 +50,7 @@ export default function Hero() {
                 {personalInfo.title}
               </p>
               <p className="max-w-[34rem] text-[15px] leading-[1.55] text-ink-200 md:text-xl md:leading-relaxed font-serif italic">
-                "{personalInfo.tagline}"
+                &quot;{personalInfo.tagline}&quot;
               </p>
             </div>
 
@@ -89,7 +89,7 @@ export default function Hero() {
               </div>
               <div className="flex flex-col gap-1">
                 <span className="font-display text-[clamp(2rem,4vw,4.5rem)] font-semibold leading-none tracking-normal text-cream-100">1</span>
-                <span className="max-w-[10rem] font-mono text-[10px] leading-snug tracking-[0.22em] text-ink-200 uppercase">Int'l Award</span>
+                <span className="max-w-[10rem] font-mono text-[10px] leading-snug tracking-[0.22em] text-ink-200 uppercase">Int&apos;l Award</span>
               </div>
             </div>
             
@@ -116,7 +116,7 @@ export default function Hero() {
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="font-display text-2xl font-semibold leading-none text-cream-100">1</span>
-                <span className="font-mono text-[9px] leading-snug tracking-[0.18em] text-ink-200 uppercase">Int'l Award</span>
+                <span className="font-mono text-[9px] leading-snug tracking-[0.18em] text-ink-200 uppercase">Int&apos;l Award</span>
               </div>
             </div>
           </div>
