@@ -9,7 +9,7 @@ import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll, Stars } from "@react-three/drei";
-import { CameraController, Hero3DObject, ServerNodes } from "@/components/Scene3D";
+import { CameraController } from "@/components/Scene3D";
 
 export default function Home() {
   return (
@@ -28,9 +28,6 @@ export default function Home() {
             <Scroll>
               <CameraController />
               <Stars radius={50} depth={50} count={6000} factor={6} saturation={0.5} fade speed={2} />
-              <ServerNodes />
-              {/* We place the Hero3DObject so it stays at the top of the scene */}
-              <Hero3DObject />
             </Scroll>
 
             {/* HTML Overlay */}
