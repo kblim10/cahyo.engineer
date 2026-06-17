@@ -13,15 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "cahyo — Backend & Cloud Infrastructure Engineer",
+  title: "CAHYO — Backend & Cloud Infrastructure Engineer",
   description:
-    "Portfolio of Muhamad Cahyo Rifki Dwi Putra — Backend Engineer & Cloud Infrastructure Enthusiast. Building scalable systems and reliable cloud architectures.",
+    "Building scalable systems & reliable cloud architectures. Kubernetes, Node.js, IoT/MQTT, and DevOps engineering.",
   keywords: [
     "backend engineer",
     "cloud infrastructure",
+    "kubernetes",
     "devops",
+    "nodejs",
     "portfolio",
     "software engineer",
+    "iot",
+    "mqtt",
   ],
   authors: [{ name: "Muhamad Cahyo Rifki Dwi Putra" }],
   icons: {
