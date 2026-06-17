@@ -5,7 +5,7 @@ import { AnimatedCard } from "./animations";
 import { Mail, Github, Linkedin, Send } from "lucide-react";
 import { useState } from "react";
 
-const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   github: Github,
   linkedin: Linkedin,
   mail: Mail,
