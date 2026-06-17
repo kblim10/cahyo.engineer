@@ -2,102 +2,94 @@
 
 import { experiences, education } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="py-32 px-6 border-b-2 border-border">
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
         <AnimatedCard>
-          <div className="flex items-center gap-3 mb-12">
+          <div className="flex items-center gap-4 mb-16">
+            <span className="label-text text-accent">03.</span>
             <div className="section-line" />
-            <span className="font-mono text-sm text-accent">03.</span>
-            <h2 className="text-2xl font-bold">Experience</h2>
+            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
+              Deployments
+            </h2>
           </div>
         </AnimatedCard>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-border hidden md:block" />
-
-          <div className="space-y-6">
-            {experiences.map((exp, idx) => (
-              <AnimatedCard key={idx} delay={0.1 + idx * 0.1}>
-                <div className="bento-card shimmer p-6 md:ml-12 relative">
-                  {/* Timeline dot */}
-                  <div className="absolute -left-[calc(3rem+7px)] top-8 w-3.5 h-3.5 rounded-full border-2 border-accent bg-background hidden md:block" />
-
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center md:hidden">
-                        <Briefcase size={14} className="text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-semibold">{exp.role}</h3>
-                        <p className="text-xs text-accent">{exp.company}</p>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono text-muted-foreground">
+        {/* Experience */}
+        <div className="space-y-8 mb-20">
+          {experiences.map((exp, idx) => (
+            <AnimatedCard key={idx} delay={0.1 + idx * 0.1}>
+              <div className="border-2 border-border p-8 bg-card hover:border-accent transition-all">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6 pb-6 border-b-2 border-border">
+                  <div className="flex-1">
+                    <div className="label-text text-accent mb-2">
                       {exp.period}
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-muted leading-relaxed mb-4">
-                    {exp.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tech.map((t) => (
-                      <span key={t} className="tech-badge text-[10px]">
-                        {t}
-                      </span>
-                    ))}
+                    </div>
+                    <h3 className="text-2xl font-bold uppercase tracking-tight mb-1">
+                      {exp.role}
+                    </h3>
+                    <p className="text-sm font-mono text-muted uppercase tracking-wider">
+                      {exp.company}
+                    </p>
                   </div>
                 </div>
-              </AnimatedCard>
-            ))}
-          </div>
+
+                {/* Description */}
+                <p className="text-base text-muted leading-relaxed mb-6">
+                  {exp.description}
+                </p>
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-2">
+                  {exp.tech.map((t) => (
+                    <span key={t} className="tech-badge">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </AnimatedCard>
+          ))}
         </div>
 
-        {/* Education */}
+        {/* Education Header */}
         <AnimatedCard delay={0.3}>
-          <div className="flex items-center gap-3 mt-16 mb-8">
+          <div className="flex items-center gap-4 mb-12">
             <div className="section-line" />
-            <h3 className="text-lg font-bold">Education</h3>
+            <h3 className="text-2xl font-bold uppercase tracking-tight">
+              Education
+            </h3>
           </div>
         </AnimatedCard>
 
-        <div className="relative">
-          <div className="absolute left-[19px] top-0 bottom-0 w-px bg-border hidden md:block" />
-
-          <div className="space-y-6">
-            {education.map((edu, idx) => (
-              <AnimatedCard key={idx} delay={0.4 + idx * 0.1}>
-                <div className="bento-card shimmer p-6 md:ml-12 relative">
-                  <div className="absolute -left-[calc(3rem+7px)] top-8 w-3.5 h-3.5 rounded-full border-2 border-emerald-400 bg-background hidden md:block" />
-
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center md:hidden">
-                        <GraduationCap size={14} className="text-emerald-400" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-semibold">{edu.degree}</h3>
-                        <p className="text-xs text-emerald-400">{edu.institution}</p>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono text-muted-foreground">
+        {/* Education */}
+        <div className="space-y-6">
+          {education.map((edu, idx) => (
+            <AnimatedCard key={idx} delay={0.4 + idx * 0.1}>
+              <div className="border-2 border-border p-8 bg-card hover:border-accent transition-all">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div className="flex-1">
+                    <div className="label-text text-accent mb-2">
                       {edu.year}
-                    </span>
+                    </div>
+                    <h4 className="text-xl font-bold uppercase tracking-tight mb-1">
+                      {edu.degree}
+                    </h4>
+                    <p className="text-sm font-mono text-muted uppercase tracking-wider">
+                      {edu.institution}
+                    </p>
                   </div>
-
-                  <p className="text-xs text-muted leading-relaxed">
-                    {edu.description}
-                  </p>
                 </div>
-              </AnimatedCard>
-            ))}
-          </div>
+                <p className="text-base text-muted leading-relaxed">
+                  {edu.description}
+                </p>
+              </div>
+            </AnimatedCard>
+          ))}
         </div>
       </div>
     </section>
