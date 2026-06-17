@@ -2,49 +2,44 @@
 
 import { experiences, education } from "@/lib/data";
 import { AnimatedCard } from "./animations";
+import { Briefcase, GraduationCap } from "lucide-react";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-32 px-6 border-b-2 border-border">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
+    <section id="experience" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-4 mb-16">
-            <span className="label-text text-accent">03.</span>
+          <div className="flex items-center gap-3 mb-16">
             <div className="section-line" />
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
-              Deployments
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Experience</h2>
           </div>
         </AnimatedCard>
 
-        {/* Experience */}
-        <div className="space-y-8 mb-20">
+        {/* Experience Timeline */}
+        <div className="space-y-6 mb-20">
           {experiences.map((exp, idx) => (
             <AnimatedCard key={idx} delay={0.1 + idx * 0.1}>
-              <div className="border-2 border-border p-8 bg-card hover:border-accent transition-all">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6 pb-6 border-b-2 border-border">
-                  <div className="flex-1">
-                    <div className="label-text text-accent mb-2">
-                      {exp.period}
+              <div className="bento-card shimmer p-6 md:p-8">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                      <Briefcase size={20} className="text-accent" />
                     </div>
-                    <h3 className="text-2xl font-bold uppercase tracking-tight mb-1">
-                      {exp.role}
-                    </h3>
-                    <p className="text-sm font-mono text-muted uppercase tracking-wider">
-                      {exp.company}
-                    </p>
+                    <div>
+                      <h3 className="text-xl font-bold mb-1">{exp.role}</h3>
+                      <p className="text-accent font-medium">{exp.company}</p>
+                    </div>
                   </div>
+                  <span className="text-sm text-muted font-mono whitespace-nowrap">
+                    {exp.period}
+                  </span>
                 </div>
 
-                {/* Description */}
-                <p className="text-base text-muted leading-relaxed mb-6">
+                <p className="text-sm text-muted leading-relaxed mb-6 ml-16">
                   {exp.description}
                 </p>
 
-                {/* Skills */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 ml-16">
                   {exp.tech.map((t) => (
                     <span key={t} className="tech-badge">
                       {t}
@@ -56,35 +51,36 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* Education Header */}
+        {/* Education */}
         <AnimatedCard delay={0.3}>
-          <div className="flex items-center gap-4 mb-12">
+          <div className="flex items-center gap-3 mb-12">
             <div className="section-line" />
-            <h3 className="text-2xl font-bold uppercase tracking-tight">
-              Education
-            </h3>
+            <h3 className="text-2xl font-bold">Education</h3>
           </div>
         </AnimatedCard>
 
-        {/* Education */}
         <div className="space-y-6">
           {education.map((edu, idx) => (
             <AnimatedCard key={idx} delay={0.4 + idx * 0.1}>
-              <div className="border-2 border-border p-8 bg-card hover:border-accent transition-all">
+              <div className="bento-card shimmer p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                  <div className="flex-1">
-                    <div className="label-text text-accent mb-2">
-                      {edu.year}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center shrink-0">
+                      <GraduationCap size={20} className="text-emerald-400" />
                     </div>
-                    <h4 className="text-xl font-bold uppercase tracking-tight mb-1">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-sm font-mono text-muted uppercase tracking-wider">
-                      {edu.institution}
-                    </p>
+                    <div>
+                      <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>
+                      <p className="text-emerald-400 font-medium">
+                        {edu.institution}
+                      </p>
+                    </div>
                   </div>
+                  <span className="text-sm text-muted font-mono whitespace-nowrap">
+                    {edu.year}
+                  </span>
                 </div>
-                <p className="text-base text-muted leading-relaxed">
+
+                <p className="text-sm text-muted leading-relaxed ml-16">
                   {edu.description}
                 </p>
               </div>

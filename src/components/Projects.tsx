@@ -2,77 +2,70 @@
 
 import { projects } from "@/lib/data";
 import { AnimatedCard } from "./animations";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink, Folder } from "lucide-react";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-32 px-6 border-b-2 border-border">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
+    <section id="projects" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
         <AnimatedCard>
-          <div className="flex items-center gap-4 mb-16">
-            <span className="label-text text-accent">04.</span>
+          <div className="flex items-center gap-3 mb-16">
             <div className="section-line" />
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
-              Containers
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Featured Projects</h2>
           </div>
         </AnimatedCard>
 
-        <AnimatedCard delay={0.1}>
-          <div className="mb-12">
-            <p className="text-xl text-foreground font-light max-w-3xl">
-              Four production systems, all deployed, all solving real
-              infrastructure challenges.
-            </p>
-          </div>
-        </AnimatedCard>
-
-        {/* Projects as "Plates" */}
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, idx) => (
             <AnimatedCard key={project.title} delay={0.1 + idx * 0.1}>
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block group"
+                className="block h-full group"
               >
-                <div className="plate-card shimmer">
-                  {/* Plate header */}
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6 pb-6 border-b-2 border-border">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="label-text text-accent">
-                          P.{String(idx + 1).padStart(2, "0")}
-                        </span>
-                        <span className="label-text">{project.category}</span>
-                      </div>
-                      <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-2 group-hover:text-accent transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm font-mono text-muted uppercase tracking-wider">
-                        {project.role}
-                      </p>
+                <div className="bento-card shimmer p-6 h-full flex flex-col">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Folder size={24} className="text-accent" />
                     </div>
-                    <div className="flex items-center gap-4">
-                      <span className="label-text">{project.period}</span>
-                      <ArrowRight
-                        size={24}
-                        className="text-accent opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-2"
-                      />
-                    </div>
+                    <ExternalLink
+                      size={20}
+                      className="text-muted group-hover:text-accent transition-colors"
+                    />
                   </div>
 
+                  {/* Category & Period */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-mono text-muted uppercase">
+                      {project.category}
+                    </span>
+                    <span className="text-muted">•</span>
+                    <span className="text-xs font-mono text-muted">
+                      {project.period}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors">
+                    {project.title}
+                  </h3>
+
+                  {/* Role */}
+                  <p className="text-sm text-accent mb-3 font-medium">
+                    {project.role}
+                  </p>
+
                   {/* Description */}
-                  <p className="text-base text-muted leading-relaxed mb-6">
+                  <p className="text-sm text-muted leading-relaxed mb-6 flex-grow">
                     {project.description}
                   </p>
 
-                  {/* Tech stack */}
+                  {/* Tech */}
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <span key={t} className="tech-badge">
+                      <span key={t} className="tech-badge text-xs">
                         {t}
                       </span>
                     ))}
@@ -84,24 +77,19 @@ export default function Projects() {
         </div>
 
         {/* More projects CTA */}
-        <AnimatedCard delay={0.5} className="mt-12">
-          <div className="border-2 border-border p-8 bg-card text-center">
-            <p className="text-sm text-muted mb-4 uppercase tracking-wider font-mono">
-              More on GitHub
-            </p>
-            <a
-              href="https://github.com/kblim10"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-lg font-bold uppercase tracking-tight text-foreground hover:text-accent transition-colors group"
-            >
-              <span>View Full Repository</span>
-              <ExternalLink
-                size={20}
-                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-              />
-            </a>
-          </div>
+        <AnimatedCard delay={0.5} className="mt-12 text-center">
+          <a
+            href="https://github.com/kblim10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted hover:text-accent transition-colors group"
+          >
+            <span>View more on GitHub</span>
+            <ExternalLink
+              size={16}
+              className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+            />
+          </a>
         </AnimatedCard>
       </div>
     </section>
