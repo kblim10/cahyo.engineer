@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-bg grid-pattern min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased noise-bg grid-pattern min-h-screen relative`}
       >
         {children}
       </body>
