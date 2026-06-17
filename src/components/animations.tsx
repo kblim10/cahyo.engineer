@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface AnimatedCardProps {
@@ -16,17 +16,15 @@ export function AnimatedCard({
 }: AnimatedCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100, z: -100, rotateX: 30, scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, z: 0, rotateX: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
       transition={{
-        duration: 0.8,
+        duration: 1.0,
         delay,
-        type: "spring",
-        bounce: 0.4
+        ease: [0.16, 1, 0.3, 1] // Custom smooth ease curve
       }}
       className={className}
-      style={{ perspective: 1000, transformStyle: "preserve-3d" }}
     >
       {children}
     </motion.div>
@@ -42,8 +40,12 @@ export function FadeIn({
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ 
+        duration: 1.0, 
+        delay,
+        ease: [0.16, 1, 0.3, 1]
+      }}
       className={className}
     >
       {children}
@@ -59,10 +61,14 @@ export function SlideIn({
 }: AnimatedCardProps & { direction?: "left" | "right" }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: direction === "left" ? -30 : 30 }}
+      initial={{ opacity: 0, x: direction === "left" ? -20 : 20 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ 
+        duration: 1.0, 
+        delay, 
+        ease: [0.16, 1, 0.3, 1] 
+      }}
       className={className}
     >
       {children}
@@ -70,43 +76,12 @@ export function SlideIn({
   );
 }
 
+// Replaced TiltCard with a flat wrapper that just renders children.
+// The user requested removing the 3D popping animations.
 export function TiltCard({ children, className = "" }: { children: ReactNode; className?: string }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
-    <motion.div
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={`perspective-[1000px] cursor-crosshair ${className}`}
-    >
-      <div style={{ transform: "translateZ(30px)" }} className="h-full">
-        {children}
-      </div>
-    </motion.div>
+    <div className={className}>
+      {children}
+    </div>
   );
 }
