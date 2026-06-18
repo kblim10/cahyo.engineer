@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #dcd8c0;
+  --text-primary: #4a4538;
+  --border-color: #4a4538;
+  --hover-bg: #4a4538;
+  --hover-text: #dcd8c0;
+  --accent: #bdae93;
+  --font-primary: 'Rajdhani', sans-serif;
+  --font-header: 'Teko', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M0 0l6 16 2-6 6-2z' fill='%234a4538'/%3E%3C/svg%3E"), auto;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  background-image: 
+    linear-gradient(90deg, rgba(74, 69, 56, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(74, 69, 56, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Nier Box Component */
+.nier-box {
+  border: 2px solid var(--border-color);
+  background: var(--bg-color);
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 4px 4px 0 rgba(74, 69, 56, 0.1);
+}
+
+.nier-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--bg-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* Nier Button */
+.nier-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nier-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: var(--hover-bg);
+  transition: width 0.15s ease-out;
+  z-index: 0;
+}
+
+.nier-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.nier-btn:hover {
+  color: var(--hover-text);
+  border-color: var(--hover-bg);
+}
+
+.nier-btn:hover::before {
+  width: 100%;
+}
+
+.nier-btn.active {
+  background: var(--hover-bg);
+  color: var(--hover-text);
+}
+
+/* Scanline effect */
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.1) 50%,
+    rgba(0,0,0,0.1)
+  );
+  background-size: 100% 4px;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.3;
+}
+
+/* Hide scrollbar for internal scrolling elements */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Ornament Animations */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes pulse-opacity {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+@keyframes scan-vertical {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.ornament-spin {
+  animation: spin-slow 8s linear infinite;
+}
+.ornament-pulse {
+  animation: pulse-opacity 2s ease-in-out infinite;
+}
+.ornament-scan {
+  animation: scan-vertical 2s linear infinite;
+}
