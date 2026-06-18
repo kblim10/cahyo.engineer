@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NierButton } from './components/NierButton';
 import { Data } from './components/Data';
 import { Skills } from './components/Skills';
