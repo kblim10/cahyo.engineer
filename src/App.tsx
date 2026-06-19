@@ -42,16 +42,16 @@ function App() {
         `}
       </style>
 
-      <div style={{ height: '100vh', display: 'flex', padding: '2rem', paddingBottom: '4rem', gap: '3rem', maxWidth: '1400px', margin: '0 auto', overflow: 'hidden' }}>
+      <div className="app-container">
         
         {/* Left Sidebar Menu */}
-        <div style={{ width: '250px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div className="sidebar">
           <div style={{ borderBottom: '4px solid var(--border-color)', paddingBottom: '1rem' }}>
             <h1 style={{ fontSize: '2.5rem', margin: 0, lineHeight: 1 }}>YoRHa OS</h1>
             <div style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '2px' }}>v1.04_kblim</div>
           </div>
           
-          <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <nav className="mobile-nav">
             {tabs.map((tab) => (
               <NierButton 
                 key={tab} 
@@ -65,7 +65,7 @@ function App() {
           </nav>
           
           {/* Decorative Ornament */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem', opacity: 0.8 }}>
+          <div className="sidebar-ornament">
             <div className="ornament-spin" style={{ width: '50px', height: '50px', border: '2px solid var(--border-color)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div className="ornament-spin" style={{ width: '30px', height: '30px', border: '2px dashed var(--border-color)', animationDirection: 'reverse', animationDuration: '6s' }} />
               <div className="ornament-pulse" style={{ position: 'absolute', width: '10px', height: '10px', backgroundColor: 'var(--border-color)' }} />
@@ -76,7 +76,7 @@ function App() {
             </div>
           </div>
 
-          <div style={{ marginTop: 'auto', fontSize: '0.9rem', borderTop: '2px solid var(--border-color)', paddingTop: '1rem' }}>
+          <div className="sidebar-status">
             STATUS: ONLINE<br/>
             MEMORY: OK<br/>
             SYSTEM: ALL GREEN

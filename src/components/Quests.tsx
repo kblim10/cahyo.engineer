@@ -24,7 +24,7 @@ export const Quests: React.FC = () => {
       </NierBox>
 
       <NierBox title="[ SIDE_QUESTS // PROJECTS ]">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
+        <div className="grid-2-col">
           {projects.map((proj, idx) => (
             <div key={idx} style={{ border: '1px solid var(--border-color)', padding: '1.5rem', display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: 'rgba(74, 69, 56, 0.02)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>

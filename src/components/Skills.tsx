@@ -6,7 +6,7 @@ export const Skills: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
+      <div className="grid-2-col">
         {Object.entries(skills).map(([category, items]) => (
           <NierBox key={category} title={`[ ${category.toUpperCase().replace(/_/g, ' ')} ]`}>
             {(category === 'languages' || category === 'tools') ? (
