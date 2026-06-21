@@ -152,6 +152,25 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1.5rem;
 }
 
+/* Hero Section Styles */
+.hero-grid {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(226, 179, 74, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 179, 74, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.scroll-indicator:hover {
+  text-shadow: var(--glow);
+}
+
 /* Buttons */
 .hsr-btn {
   display: flex;
@@ -186,6 +205,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column-reverse !important;
+    justify-content: center;
+    gap: 2rem !important;
+    text-align: center;
+    padding-top: 4rem;
+  }
+  
+  .hero-content h1 {
+    fontSize: '2.5rem' !important;
+  }
+
+  .hero-content img {
+    max-height: '40vh' !important;
+  }
+
   .app-container {
     flex-direction: column;
     padding: 1rem;

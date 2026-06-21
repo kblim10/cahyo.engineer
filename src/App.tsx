@@ -4,6 +4,7 @@ import { Data } from './components/Data';
 import { Skills } from './components/Skills';
 import { Quests } from './components/Quests';
 import { Databank } from './components/Databank';
+import { Hero } from './components/Hero';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Code2, ShieldAlert, Database, Volume2, VolumeX } from 'lucide-react';
 
@@ -57,7 +58,17 @@ function App() {
         {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
       </button>
 
-      <div className="app-container">
+      {/* Hero Landing Scene */}
+      <Hero />
+
+      {/* Main App Content (Revealed on Scroll) */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="app-container"
+      >
         
         {/* Left Sidebar Menu */}
         <div className="sidebar">
@@ -118,7 +129,7 @@ function App() {
           </div>
         </div>
 
-      </div>
+      </motion.div>
     </>
   );
 }

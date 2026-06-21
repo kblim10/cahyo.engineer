@@ -3,7 +3,7 @@ import { personalInfo, socials, education, experiences } from '../data';
 import { GlassPanel } from './GlassPanel';
 import { MapPin, Mail, Briefcase, GraduationCap } from 'lucide-react';
 import { HSRButton } from './HSRButton';
-import { Download, Github, Linkedin, Mail as MailIcon } from 'lucide-react';
+import { Download, Mail as MailIcon } from 'lucide-react';
 
 export const Data: React.FC = () => {
   return (
@@ -52,8 +52,8 @@ export const Data: React.FC = () => {
       <GlassPanel title="EXPERIENCE" icon={<Briefcase size={24} />}>
         {experiences.map((exp, index) => (
           <div key={index} style={{ marginBottom: '1rem' }}>
-            <h3 style={{ margin: '0 0 0.5rem 0' }}>{exp.title}</h3>
-            <p style={{ margin: 0, opacity: 0.8 }}>{exp.company} | {exp.duration}</p>
+            <h3 style={{ margin: '0 0 0.5rem 0' }}>{exp.role}</h3>
+            <p style={{ margin: 0, opacity: 0.8 }}>{exp.company} | {exp.period}</p>
           </div>
         ))}
       </GlassPanel>
@@ -75,10 +75,10 @@ export const Data: React.FC = () => {
           {socials.map((social) => (
             <a key={social.name} href={social.url} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
               <HSRButton icon={
-                social.icon === 'github' ? <Github size={18} /> :
-                social.icon === 'linkedin' ? <Linkedin size={18} /> :
-                <MailIcon size={18} />
+                social.icon === 'mail' ? <MailIcon size={18} /> : undefined
               }>
+                {social.icon === 'github' && <span style={{marginRight: '8px'}}>[GH]</span>}
+                {social.icon === 'linkedin' && <span style={{marginRight: '8px'}}>[LI]</span>}
                 {social.name.toUpperCase()}
               </HSRButton>
             </a>

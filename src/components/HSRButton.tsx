@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import type { ButtonHTMLAttributes, FC } from 'react';
 import { useAudio } from '../hooks/useAudio';
 
 interface HSRButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

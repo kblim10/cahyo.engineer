@@ -1,4 +1,4 @@
-import { HTMLAttributes, FC } from 'react';
+import type { HTMLAttributes, FC } from 'react';
 
 interface GlassPanelProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
