@@ -176,3 +176,26 @@ export const techMarquee = [
   "VirtualBox",
   "ArduinoIDE",
 ];
+
+export const databank = {
+  hobbies: [
+    { name: "Jogging", icon: "activity", desc: "Menjaga stamina agar tetap fit saat ngoding berjam-jam." },
+    { name: "Swimming", icon: "droplets", desc: "Olahraga rutin untuk relaksasi otot dan pikiran." },
+  ],
+  games: [
+    { name: "Honkai: Star Rail", icon: "gamepad-2", desc: "Suka dengan cerita sci-fi dan turn-based strateginya." },
+    { name: "Genshin Impact", icon: "sparkles", desc: "Eksplorasi dunia terbuka yang luas dan elemen magis." },
+    { name: "Valorant / FPS", icon: "crosshair", desc: "Melatih refleks dan kerja sama tim (Mabar)." },
+  ],
+  entertainment: [
+    { name: "Formula 1 (F1)", icon: "flag", desc: "Penggemar berat balapan jet darat. Suka analisis strategi pit stop." },
+    { name: "Movies & Series", icon: "film", desc: "Menikmati film Sci-Fi, Thriller, dan Action untuk mencari inspirasi." },
+    { name: "Anime / Manga", icon: "tv", desc: "Nonton anime favorit di waktu luang untuk hiburan visual." },
+  ],
+  gear: [
+    { name: "Acer Nitro Lite 16", icon: "laptop", desc: "Daily driver (Laptop) untuk ngoding, server, dan gaming." },
+    { name: "Mechanical Keyboard", icon: "keyboard", desc: "Wajib untuk kenyamanan mengetik kode panjang." },
+    { name: "Headset / TWS", icon: "headphones", desc: "Untuk fokus dengerin musik soundtrack saat ngoding." },
+  ]
+};
+

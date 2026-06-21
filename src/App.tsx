@@ -1,66 +1,81 @@
-import { useState } from 'react';
-import { NierButton } from './components/NierButton';
+import { useState, useRef, useEffect } from 'react';
+import { HSRButton } from './components/HSRButton';
 import { Data } from './components/Data';
 import { Skills } from './components/Skills';
 import { Quests } from './components/Quests';
-import { Intel } from './components/Intel';
+import { Databank } from './components/Databank';
 import { motion, AnimatePresence } from 'framer-motion';
-import { techMarquee } from './data';
+import { User, Code2, ShieldAlert, Database, Volume2, VolumeX } from 'lucide-react';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('DATA');
+  const [activeTab, setActiveTab] = useState('TRAILBLAZER');
+  const [isMuted, setIsMuted] = useState(true);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'DATA': return <Data />;
-      case 'SKILLS': return <Skills />;
-      case 'QUESTS': return <Quests />;
-      case 'INTEL': return <Intel />;
-      default: return <div className="nier-box">PROCESSING...</div>;
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.3;
+    }
+  }, []);
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+      setIsMuted(!isMuted);
     }
   };
 
-  const tabs = ['DATA', 'SKILLS', 'QUESTS', 'INTEL'];
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'TRAILBLAZER': return <Data />;
+      case 'TRACES': return <Skills />;
+      case 'MISSIONS': return <Quests />;
+      case 'DATABANK': return <Databank />;
+      default: return <div className="glass-panel glow-accent">PROCESSING...</div>;
+    }
+  };
+
+  const tabs = [
+    { id: 'TRAILBLAZER', icon: <User size={20} /> },
+    { id: 'TRACES', icon: <Code2 size={20} /> },
+    { id: 'MISSIONS', icon: <ShieldAlert size={20} /> },
+    { id: 'DATABANK', icon: <Database size={20} /> },
+  ];
 
   return (
     <>
-      <div className="scanlines"></div>
-      
-      {/* Global Marquee at bottom */}
-      <div style={{ position: 'fixed', bottom: 0, left: 0, width: '100%', overflow: 'hidden', borderTop: '2px solid var(--border-color)', padding: '0.5rem 0', backgroundColor: 'var(--hover-bg)', color: 'var(--hover-text)', zIndex: 50 }}>
-        <div style={{ display: 'inline-block', whiteSpace: 'nowrap', animation: 'marquee 20s linear infinite', fontWeight: 600, letterSpacing: '2px' }}>
-          {techMarquee.join(' ++ ')} ++ {techMarquee.join(' ++ ')}
-        </div>
-      </div>
-
-      <style>
-        {`
-          @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-          }
-        `}
-      </style>
+      {/* BGM Player */}
+      <audio ref={audioRef} src="/soundtrack.mp3" loop />
+      <button 
+        onClick={toggleMute}
+        style={{ position: 'fixed', top: '2rem', right: '2rem', zIndex: 100, background: 'rgba(13,17,23,0.6)', backdropFilter: 'blur(10px)', border: '1px solid var(--border-color)', color: 'var(--accent)', borderRadius: '50%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+      >
+        {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+      </button>
 
       <div className="app-container">
         
         {/* Left Sidebar Menu */}
         <div className="sidebar">
-          <div style={{ borderBottom: '4px solid var(--border-color)', paddingBottom: '1rem' }}>
-            <h1 style={{ fontSize: '2.5rem', margin: 0, lineHeight: 1 }}>YoRHa OS</h1>
-            <div style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '2px' }}>v1.04_kblim</div>
+          <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '1.5rem', textAlign: 'center' }}>
+            <h1 className="glow-text" style={{ fontSize: '2.5rem', margin: 0, lineHeight: 1, color: 'var(--text-primary)' }}>YoRHa OS</h1>
+            <div style={{ fontSize: '0.9rem', color: 'var(--accent)', letterSpacing: '3px', marginTop: '0.5rem' }}>ASTRAL.EXPRESS</div>
           </div>
           
           <nav className="mobile-nav">
             {tabs.map((tab) => (
-              <NierButton 
-                key={tab} 
-                active={activeTab === tab}
-                onClick={() => setActiveTab(tab)}
-                style={{ width: '100%', justifyContent: 'flex-start', padding: '0.75rem 1rem' }}
+              <HSRButton 
+                key={tab.id} 
+                active={activeTab === tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                icon={tab.icon}
               >
-                [ {tab} ]
-              </NierButton>
+                {tab.id}
+              </HSRButton>
             ))}
           </nav>
           
@@ -76,31 +91,16 @@ function App() {
             </div>
           </div>
 
-          <div className="sidebar-status">
-            STATUS: ONLINE<br/>
-            MEMORY: OK<br/>
-            SYSTEM: ALL GREEN
+          <div className="sidebar-status glow-text" style={{ color: 'var(--accent)' }}>
+            STATUS: CONNECTED<br/>
+            PING: 14ms<br/>
+            WARP: READY
           </div>
         </div>
 
         {/* Right Content Area */}
         <div style={{ flex: 1, position: 'relative', height: '100%' }}>
-          <div style={{ 
-            position: 'absolute', 
-            top: '-20px', left: '-20px', 
-            width: '40px', height: '40px', 
-            borderTop: '4px solid var(--border-color)', 
-            borderLeft: '4px solid var(--border-color)',
-            pointerEvents: 'none'
-          }} />
-          <div style={{ 
-            position: 'absolute', 
-            bottom: '-20px', right: '-20px', 
-            width: '40px', height: '40px', 
-            borderBottom: '4px solid var(--border-color)', 
-            borderRight: '4px solid var(--border-color)',
-            pointerEvents: 'none'
-          }} />
+          {/* Subtle decorations removed for cleaner glass look */}
           
           <div className="no-scrollbar" style={{ padding: '1rem', height: '100%', overflowY: 'auto' }}>
             <AnimatePresence mode="wait">
